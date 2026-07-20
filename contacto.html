@@ -114,7 +114,10 @@
                 <h3>📧 Correo Electrónico</h3>
                 <p>Escríbenos directamente y te responderemos lo antes posible.</p>
                 <br>
-                <a href="mailto:contacto@atlastudirectorcomercial.com" style="color: var(--accent-blue); font-weight: bold; font-size: 18px;">contacto@atlastudirectorcomercial.com</a>
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; background: rgba(0, 163, 255, 0.05); padding: 12px; border-radius: 8px; border: 1px solid rgba(0, 163, 255, 0.2);">
+                    <a href="mailto:contacto@atlastudirectorcomercial.com" style="color: var(--accent-blue); font-weight: bold; font-size: 15px; word-break: break-all; margin: 0; line-height: 1.2;">contacto@atlastudirectorcomercial.com</a>
+                    <button onclick="navigator.clipboard.writeText('contacto@atlastudirectorcomercial.com'); this.innerText='✅ Copiado'; this.style.background='var(--success)'; setTimeout(() => { this.innerText='📋 Copiar'; this.style.background='var(--accent-blue)'; }, 2000);" style="background: var(--accent-blue); color: white; border: none; padding: 6px 10px; border-radius: 5px; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: bold; transition: 0.3s; white-space: nowrap;">📋 Copiar</button>
+                </div>
             </div>
             
             <div class="contact-card">
