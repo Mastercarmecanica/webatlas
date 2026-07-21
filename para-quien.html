@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para quién fue creado | Atlas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: rgba(22, 27, 34, 0.65);
+            --accent-blue: #00a3ff;
+            --text-main: #ffffff;
+            --text-dim: #8b949e;
+            --success: #2ea043;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 100vh;
+            transform: translate(-50%, -50%);
+            background-image: url('logo atlas actualizada.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 70%;
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        header {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .logo span { color: var(--accent-blue); }
+
+        h2, h3 { font-family: 'Outfit', sans-serif; }
+
+        .audience-card {
+            background: rgba(0, 163, 255, 0.03);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 163, 255, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: 0.3s;
+            text-align: left;
+        }
+
+        .audience-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-3px);
+            background: rgba(0, 163, 255, 0.06);
+        }
+
+        .audience-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .audience-header svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--success);
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .audience-header h3 {
+            margin: 0;
+            font-size: 22px;
+            color: var(--text-main);
+        }
+
+        .audience-desc {
+            color: var(--text-dim);
+            font-size: 16px;
+            margin: 0;
+            margin-left: 39px; /* Alineado con el texto después del check */
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            border-top: 1px solid #30363d;
+            color: var(--text-dim);
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">ATLAS<span>.</span></a>
+        <nav style="display: flex; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <a href="como-funciona.html" style="color: white; text-decoration: none; margin-left: 20px; transition: 0.3s;" onmouseover="this.style.color='var(--accent-blue)'" onmouseout="this.style.color='white'">Cómo funciona</a>
+            <a href="para-quien.html" style="color: var(--accent-blue); text-decoration: none; margin-left: 20px; transition: 0.3s; font-weight: bold;">Para quién es</a>
+            <a href="index.html#filosofia" style="color: white; text-decoration: none; margin-left: 20px; transition: 0.3s;" onmouseover="this.style.color='var(--accent-blue)'" onmouseout="this.style.color='white'">Filosofía</a>
+            <a href="index.html#vision" style="color: white; text-decoration: none; margin-left: 20px; transition: 0.3s;" onmouseover="this.style.color='var(--accent-blue)'" onmouseout="this.style.color='white'">Visión</a>
+            <a href="contacto.html" style="color: white; text-decoration: none; margin-left: 20px; font-weight: bold; background: var(--accent-blue); padding: 8px 15px; border-radius: 5px; transition: 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Contacto</a>
+        </nav>
+    </header>
+
+    <section style="padding: 100px 5%; max-width: 900px; margin: 0 auto; text-align: center; min-height: 70vh;">
+        <h2 style="font-size: 42px; margin-bottom: 20px;">¿Para quién fue creado Atlas?</h2>
+        <p style="color: var(--text-dim); font-size: 18px; margin-bottom: 60px;">Diseñado para operar en la realidad de tu negocio, con soluciones directas según tu industria.</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px;">
+            
+            <div class="audience-card">
+                <div class="audience-header">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <h3>Empresas en Mercado Libre</h3>
+                </div>
+                <p class="audience-desc">Atlas cruza tus ventas con las tarifas, costos de envío y reputación de la plataforma para decirte qué productos son realmente rentables, cuáles debes pausar y en cuáles puedes mejorar tu margen subiendo el precio o modificando la exposición.</p>
+            </div>
+
+            <div class="audience-card">
+                <div class="audience-header">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <h3>Pymes</h3>
+                </div>
+                <p class="audience-desc">Ideal para equipos pequeños donde el tiempo es oro. Automatiza el cruce de datos financieros para proteger tu flujo de caja, mostrándote exactamente qué acciones tomar hoy para maximizar ingresos sin tener que contratar analistas de datos.</p>
+            </div>
+
+            <div class="audience-card">
+                <div class="audience-header">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <h3>Comercios</h3>
+                </div>
+                <p class="audience-desc">Para tiendas físicas y digitales, Atlas identifica qué inventario se está estancando en los estantes. Te sugiere estrategias de liquidación rápida antes de que tu capital quede inmovilizado por largos períodos de tiempo.</p>
+            </div>
+
+            <div class="audience-card">
+                <div class="audience-header">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <h3>Distribuidores</h3>
+                </div>
+                <p class="audience-desc">Gestiona tus márgenes a gran volumen. Recibe alertas instantáneas cuando los proveedores varíen costos para que ajustes tu lista de precios a clientes a tiempo, asegurando que cada venta al mayor siga siendo rentable.</p>
+            </div>
+
+            <div class="audience-card">
+                <div class="audience-header">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <h3>Importadores</h3>
+                </div>
+                <p class="audience-desc">Ten visibilidad clara de cuánto inventario tienes en tránsito y cuánto en bodega. Conoce los productos estrella que debes reabastecer urgentemente y evalúa el impacto de los tiempos de entrega en tu rentabilidad final.</p>
+            </div>
+
+            <div class="audience-card">
+                <div class="audience-header">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <h3>Negocios con inventario</h3>
+                </div>
+                <p class="audience-desc">Olvídate de mirar hojas de Excel infinitas. Atlas diagnostica la salud general de tu stock, te alerta sobre productos por agotarse y te ayuda a planificar compras futuras para que el dinero siga fluyendo en el negocio.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div style="margin-bottom: 30px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+            <a href="#" style="color: var(--text-main); text-decoration: none; font-weight: bold; transition: 0.3s; opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">LinkedIn</a>
+            <a href="#" style="color: var(--text-main); text-decoration: none; font-weight: bold; transition: 0.3s; opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">Instagram</a>
+            <a href="#" style="color: var(--text-main); text-decoration: none; font-weight: bold; transition: 0.3s; opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">TikTok</a>
+            <a href="#" style="color: var(--text-main); text-decoration: none; font-weight: bold; transition: 0.3s; opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">YouTube</a>
+        </div>
+        <p>&copy; 2024 Atlas - Tu Director Comercial. Democratizando la inteligencia comercial.</p>
+    </footer>
+
+</body>
+</html>

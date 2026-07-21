@@ -261,7 +261,9 @@
 
     <header>
         <a href="#" class="logo">ATLAS<span>.</span></a>
-        <nav style="display: flex; align-items: center;">
+        <nav style="display: flex; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <a href="como-funciona.html" target="_blank" style="color: white; text-decoration: none; margin-left: 20px; transition: 0.3s;" onmouseover="this.style.color='var(--accent-blue)'" onmouseout="this.style.color='white'">Cómo funciona</a>
+            <a href="para-quien.html" target="_blank" style="color: white; text-decoration: none; margin-left: 20px; transition: 0.3s;" onmouseover="this.style.color='var(--accent-blue)'" onmouseout="this.style.color='white'">Para quién es</a>
             <a href="#filosofia" style="color: white; text-decoration: none; margin-left: 20px; transition: 0.3s;" onmouseover="this.style.color='var(--accent-blue)'" onmouseout="this.style.color='white'">Filosofía</a>
             <a href="#vision" style="color: white; text-decoration: none; margin-left: 20px; transition: 0.3s;" onmouseover="this.style.color='var(--accent-blue)'" onmouseout="this.style.color='white'">Visión</a>
             <a href="contacto.html" target="_blank" style="color: white; text-decoration: none; margin-left: 20px; font-weight: bold; background: var(--accent-blue); padding: 8px 15px; border-radius: 5px; transition: 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Contacto</a>
@@ -275,7 +277,7 @@
         <p style="margin-top: 20px; font-size: 15px; color: var(--text-dim); max-width: 700px; margin-left: auto; margin-right: auto; font-style: italic; line-height: 1.4;">La mayoría de los negocios no pierde dinero por vender poco. Lo pierde por tomar decisiones con información incompleta. Atlas existe para cambiar eso.</p>
         
         <div class="video-container" style="margin: 50px auto 0; max-width: 800px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(0, 163, 255, 0.2); box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
-            <video width="100%" controls poster="https://via.placeholder.com/800x450/161b22/00a3ff?text=Video+Atlas+(40+segundos)" style="display: block; background: #161b22;">
+            <video width="100%" autoplay muted loop playsinline poster="https://via.placeholder.com/800x450/161b22/00a3ff?text=Video+Atlas+(40+segundos)" style="display: block; background: #161b22; pointer-events: none;">
                 <source src="demo-atlas.mp4" type="video/mp4">
                 Tu navegador no soporta el formato de video.
             </video>
@@ -326,51 +328,7 @@
         </div>
     </section>
 
-    <section style="padding: 80px 5%; text-align: center; background: rgba(0, 163, 255, 0.02); border-top: 1px solid #30363d;">
-        <h2 style="font-size: 36px; margin-bottom: 10px;">¿Cómo funciona?</h2>
-        <p style="color: var(--text-dim); font-size: 20px; margin-bottom: 50px;">En solo tres pasos.</p>
-        
-        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; max-width: 1000px; margin: 0 auto; align-items: stretch;">
-            <!-- Paso 1 -->
-            <div style="flex: 1; min-width: 250px; background: var(--card-bg); padding: 40px 20px; border-radius: 12px; border: 1px solid #30363d; display: flex; flex-direction: column; align-items: center; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
-                <div style="background: rgba(0,163,255,0.1); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
-                    <svg style="width: 30px; height: 30px; fill: var(--accent-blue);" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
-                </div>
-                <h3 style="margin-top: 0; color: var(--text-main); font-size: 22px;">Paso 1</h3>
-                <p style="color: var(--text-dim); font-size: 16px; margin: 0;">Sube el reporte de Mercado Libre.</p>
-            </div>
-            
-            <div class="step-arrow" style="display: flex; align-items: center; justify-content: center; color: var(--accent-blue);">
-                <svg style="width: 30px; height: 30px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-            </div>
 
-            <!-- Paso 2 -->
-            <div style="flex: 1; min-width: 250px; background: var(--card-bg); padding: 40px 20px; border-radius: 12px; border: 1px solid #30363d; display: flex; flex-direction: column; align-items: center; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
-                <div style="background: rgba(0,163,255,0.1); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
-                    <svg style="width: 30px; height: 30px; fill: var(--accent-blue);" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
-                </div>
-                <h3 style="margin-top: 0; color: var(--text-main); font-size: 22px;">Paso 2</h3>
-                <p style="color: var(--text-dim); font-size: 16px; margin: 0;">Atlas analiza miles de datos.</p>
-            </div>
-
-            <div class="step-arrow" style="display: flex; align-items: center; justify-content: center; color: var(--accent-blue);">
-                <svg style="width: 30px; height: 30px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-            </div>
-
-            <!-- Paso 3 -->
-            <div style="flex: 1; min-width: 250px; background: var(--card-bg); padding: 40px 20px; border-radius: 12px; border: 1px solid #30363d; display: flex; flex-direction: column; align-items: center; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
-                <div style="background: rgba(0,163,255,0.1); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
-                    <svg style="width: 30px; height: 30px; fill: var(--accent-blue);" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                </div>
-                <h3 style="margin-top: 0; color: var(--text-main); font-size: 22px;">Paso 3</h3>
-                <p style="color: var(--text-dim); font-size: 16px; margin: 0; margin-bottom: 15px;">Recibe decisiones claras.</p>
-                <div style="text-align: center; color: var(--text-main); font-size: 14px; font-weight: bold; line-height: 1.8;">
-                    Comprar.<br>Liquidar.<br>Subir precio.<br>Cambiar proveedor.<br><span style="color: var(--accent-blue);">Fin.</span>
-                </div>
-            </div>
-        </div>
-    </section>
-    
     <section class="timeline-section">
         <h2>Un día con Atlas</h2>
         <div class="timeline">
@@ -412,35 +370,6 @@
         </div>
     </section>
 
-    <section style="padding: 80px 5%; max-width: 800px; margin: 0 auto; text-align: center;">
-        <h2 style="font-size: 36px; margin-bottom: 40px;">¿Para quién fue creado Atlas?</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; text-align: left;">
-            <div style="background: rgba(0, 163, 255, 0.05); padding: 15px 20px; border-radius: 8px; border: 1px solid rgba(0, 163, 255, 0.2); display: flex; align-items: center; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
-                <svg style="width: 20px; height: 20px; fill: var(--success); margin-right: 12px; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                <span style="font-weight: 500;">Empresas que venden en Mercado Libre</span>
-            </div>
-            <div style="background: rgba(0, 163, 255, 0.05); padding: 15px 20px; border-radius: 8px; border: 1px solid rgba(0, 163, 255, 0.2); display: flex; align-items: center; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
-                <svg style="width: 20px; height: 20px; fill: var(--success); margin-right: 12px; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                <span style="font-weight: 500;">Pymes</span>
-            </div>
-            <div style="background: rgba(0, 163, 255, 0.05); padding: 15px 20px; border-radius: 8px; border: 1px solid rgba(0, 163, 255, 0.2); display: flex; align-items: center; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
-                <svg style="width: 20px; height: 20px; fill: var(--success); margin-right: 12px; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                <span style="font-weight: 500;">Comercios</span>
-            </div>
-            <div style="background: rgba(0, 163, 255, 0.05); padding: 15px 20px; border-radius: 8px; border: 1px solid rgba(0, 163, 255, 0.2); display: flex; align-items: center; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
-                <svg style="width: 20px; height: 20px; fill: var(--success); margin-right: 12px; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                <span style="font-weight: 500;">Distribuidores</span>
-            </div>
-            <div style="background: rgba(0, 163, 255, 0.05); padding: 15px 20px; border-radius: 8px; border: 1px solid rgba(0, 163, 255, 0.2); display: flex; align-items: center; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
-                <svg style="width: 20px; height: 20px; fill: var(--success); margin-right: 12px; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                <span style="font-weight: 500;">Importadores</span>
-            </div>
-            <div style="background: rgba(0, 163, 255, 0.05); padding: 15px 20px; border-radius: 8px; border: 1px solid rgba(0, 163, 255, 0.2); display: flex; align-items: center; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
-                <svg style="width: 20px; height: 20px; fill: var(--success); margin-right: 12px; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                <span style="font-weight: 500;">Negocios con inventario</span>
-            </div>
-        </div>
-    </section>
 
     <section id="filosofia" style="padding: 80px 5%; text-align: center; background: var(--card-bg); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid #30363d;">
         <h2>Nuestra Filosofía</h2>

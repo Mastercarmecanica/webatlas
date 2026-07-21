@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo funciona | Atlas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: rgba(22, 27, 34, 0.65);
+            --accent-blue: #00a3ff;
+            --text-main: #ffffff;
+            --text-dim: #8b949e;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 100vh;
+            transform: translate(-50%, -50%);
+            background-image: url('logo atlas actualizada.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 70%;
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        header {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .logo span { color: var(--accent-blue); }
+
+        h2, h3 { font-family: 'Outfit', sans-serif; }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            border-top: 1px solid #30363d;
+            color: var(--text-dim);
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 850px) {
+            .step-arrow { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">ATLAS<span>.</span></a>
+        <nav style="display: flex; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <a href="como-funciona.html" style="color: var(--accent-blue); text-decoration: none; margin-left: 20px; transition: 0.3s; font-weight: bold;">Cómo funciona</a>
+            <a href="para-quien.html" style="color: white; text-decoration: none; margin-left: 20px; transition: 0.3s;" onmouseover="this.style.color='var(--accent-blue)'" onmouseout="this.style.color='white'">Para quién es</a>
+            <a href="index.html#filosofia" style="color: white; text-decoration: none; margin-left: 20px; transition: 0.3s;" onmouseover="this.style.color='var(--accent-blue)'" onmouseout="this.style.color='white'">Filosofía</a>
+            <a href="index.html#vision" style="color: white; text-decoration: none; margin-left: 20px; transition: 0.3s;" onmouseover="this.style.color='var(--accent-blue)'" onmouseout="this.style.color='white'">Visión</a>
+            <a href="contacto.html" style="color: white; text-decoration: none; margin-left: 20px; font-weight: bold; background: var(--accent-blue); padding: 8px 15px; border-radius: 5px; transition: 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Contacto</a>
+        </nav>
+    </header>
+
+    <section style="padding: 100px 5%; text-align: center; background: rgba(0, 163, 255, 0.02); min-height: 70vh; display: flex; flex-direction: column; justify-content: center;">
+        <h2 style="font-size: 42px; margin-bottom: 10px;">¿Cómo funciona?</h2>
+        <p style="color: var(--text-dim); font-size: 22px; margin-bottom: 70px;">En solo tres pasos.</p>
+        
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; max-width: 1100px; margin: 0 auto; align-items: stretch;">
+            <!-- Paso 1 -->
+            <div style="flex: 1; min-width: 280px; background: var(--card-bg); padding: 50px 30px; border-radius: 12px; border: 1px solid #30363d; display: flex; flex-direction: column; align-items: center; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
+                <div style="background: rgba(0,163,255,0.1); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 30px;">
+                    <svg style="width: 40px; height: 40px; fill: var(--accent-blue);" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+                </div>
+                <h3 style="margin-top: 0; color: var(--text-main); font-size: 26px;">Paso 1</h3>
+                <p style="color: var(--text-dim); font-size: 18px; margin: 0;">Sube el reporte de Mercado Libre.</p>
+            </div>
+            
+            <div class="step-arrow" style="display: flex; align-items: center; justify-content: center; color: var(--accent-blue);">
+                <svg style="width: 40px; height: 40px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+            </div>
+
+            <!-- Paso 2 -->
+            <div style="flex: 1; min-width: 280px; background: var(--card-bg); padding: 50px 30px; border-radius: 12px; border: 1px solid #30363d; display: flex; flex-direction: column; align-items: center; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
+                <div style="background: rgba(0,163,255,0.1); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 30px;">
+                    <svg style="width: 40px; height: 40px; fill: var(--accent-blue);" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+                </div>
+                <h3 style="margin-top: 0; color: var(--text-main); font-size: 26px;">Paso 2</h3>
+                <p style="color: var(--text-dim); font-size: 18px; margin: 0;">Atlas analiza miles de datos.</p>
+            </div>
+
+            <div class="step-arrow" style="display: flex; align-items: center; justify-content: center; color: var(--accent-blue);">
+                <svg style="width: 40px; height: 40px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+            </div>
+
+            <!-- Paso 3 -->
+            <div style="flex: 1; min-width: 280px; background: var(--card-bg); padding: 50px 30px; border-radius: 12px; border: 1px solid #30363d; display: flex; flex-direction: column; align-items: center; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
+                <div style="background: rgba(0,163,255,0.1); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 30px;">
+                    <svg style="width: 40px; height: 40px; fill: var(--accent-blue);" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                </div>
+                <h3 style="margin-top: 0; color: var(--text-main); font-size: 26px;">Paso 3</h3>
+                <p style="color: var(--text-dim); font-size: 18px; margin: 0; margin-bottom: 20px;">Recibe decisiones claras.</p>
+                <div style="text-align: center; color: var(--text-main); font-size: 16px; font-weight: bold; line-height: 2;">
+                    Comprar.<br>Liquidar.<br>Subir precio.<br>Cambiar proveedor.<br><span style="color: var(--accent-blue); font-size: 20px;">Fin.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div style="margin-bottom: 30px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+            <a href="#" style="color: var(--text-main); text-decoration: none; font-weight: bold; transition: 0.3s; opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">LinkedIn</a>
+            <a href="#" style="color: var(--text-main); text-decoration: none; font-weight: bold; transition: 0.3s; opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">Instagram</a>
+            <a href="#" style="color: var(--text-main); text-decoration: none; font-weight: bold; transition: 0.3s; opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">TikTok</a>
+            <a href="#" style="color: var(--text-main); text-decoration: none; font-weight: bold; transition: 0.3s; opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">YouTube</a>
+        </div>
+        <p>&copy; 2024 Atlas - Tu Director Comercial. Democratizando la inteligencia comercial.</p>
+    </footer>
+
+</body>
+</html>
