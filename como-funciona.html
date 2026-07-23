@@ -3,148 +3,452 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cómo funciona | Atlas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <title>Cómo funciona Atlas | Tu Director Comercial</title>
+    <meta name="description" content="Atlas transforma miles de datos de tu negocio en decisiones claras y accionables. Así funciona tu Director Comercial.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0d1117;
-            --card-bg: rgba(22, 27, 34, 0.65);
-            --accent-blue: #00a3ff;
-            --text-main: #ffffff;
-            --text-dim: #8b949e;
+            --bg:         #090c10;
+            --bg-card:    rgba(17, 22, 30, 0.75);
+            --atlas-blue: #00a3ff;
+            --atlas-blue2:#0077cc;
+            --text:       #ffffff;
+            --text-dim:   #8b949e;
+            --border:     #21262d;
         }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
+            background-color: var(--bg);
+            color: var(--text);
             line-height: 1.6;
             position: relative;
+            overflow-x: hidden;
         }
-
         body::before {
             content: '';
             position: fixed;
-            top: 50%;
-            left: 50%;
-            width: 100vw;
-            height: 100vh;
+            top: 50%; left: 50%;
+            width: 100vw; height: 100vh;
             transform: translate(-50%, -50%);
             background-image: url('logo atlas actualizada.png');
             background-repeat: no-repeat;
             background-position: center;
-            background-size: 70%;
-            opacity: 0.15;
-            z-index: -1;
+            background-size: 65%;
+            opacity: 0.06;
+            z-index: 0;
             pointer-events: none;
         }
-
         header {
-            padding: 20px 5%;
+            padding: 20px 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #30363d;
+            border-bottom: 1px solid var(--border);
+            position: relative; z-index: 10;
         }
-
         .logo {
-            font-weight: 700;
-            font-size: 24px;
-            letter-spacing: 2px;
-            color: var(--text-main);
-            text-decoration: none;
             font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            letter-spacing: 3px;
+            color: var(--text);
+            text-decoration: none;
         }
-
-        .logo span { color: var(--accent-blue); }
-
-        h2, h3 { font-family: 'Outfit', sans-serif; }
-
-        footer {
-            text-align: center;
-            padding: 50px;
-            border-top: 1px solid #30363d;
+        .logo span { color: var(--atlas-blue); }
+        .logo small {
+            display: block;
+            font-size: 9px;
+            letter-spacing: 2.5px;
             color: var(--text-dim);
-            margin-top: 50px;
+            font-weight: 400;
+            margin-top: -4px;
         }
-        
-        @media (max-width: 850px) {
-            .step-arrow { display: none !important; }
+        nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 6px 14px;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--text); }
+        nav a.active { color: var(--atlas-blue); font-weight: 700; }
+        nav a.btn-nav {
+            background: var(--atlas-blue);
+            color: #fff;
+            border-radius: 6px;
+            font-weight: 700;
+            padding: 8px 18px;
+        }
+        nav a.btn-nav:hover { background: var(--atlas-blue2); color: #fff; }
+
+        /* HERO */
+        .hero {
+            padding: 110px 6% 80px;
+            text-align: center;
+            position: relative; z-index: 1;
+        }
+        .section-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--atlas-blue);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(36px, 5vw, 60px);
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            background: linear-gradient(160deg, #ffffff 30%, #6699bb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        .hero-sub {
+            font-size: 18px;
+            color: var(--text-dim);
+            max-width: 580px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* PASOS */
+        .steps-section {
+            padding: 80px 6%;
+            position: relative; z-index: 1;
+        }
+        .steps-grid {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 0;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .step-card {
+            flex: 1;
+            min-width: 260px;
+            background: var(--bg-card);
+            padding: 50px 34px;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: border-color 0.2s, transform 0.2s;
+            position: relative;
+        }
+        .step-card:first-child { border-radius: 12px 0 0 12px; }
+        .step-card:last-child { border-radius: 0 12px 12px 0; }
+        .step-card:not(:last-child) { border-right: none; }
+        .step-card:hover { border-color: var(--atlas-blue); transform: translateY(-4px); z-index: 2; }
+        .step-icon {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: rgba(0,163,255,0.08);
+            border: 1px solid rgba(0,163,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+        }
+        .step-icon svg { width: 34px; height: 34px; fill: var(--atlas-blue); }
+        .step-num {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--atlas-blue);
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .step-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 14px;
+            letter-spacing: -0.3px;
+        }
+        .step-card p { font-size: 15px; color: var(--text-dim); line-height: 1.6; }
+        .step-result {
+            margin-top: 20px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .step-result span { color: var(--atlas-blue); }
+
+        .step-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--atlas-blue);
+            padding: 0 2px;
+            z-index: 3;
+        }
+        .step-arrow svg { width: 28px; height: 28px; fill: currentColor; }
+
+        /* DETRÁS */
+        .behind {
+            padding: 100px 6%;
+            border-top: 1px solid var(--border);
+            position: relative; z-index: 1;
+            text-align: center;
+        }
+        .behind h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(26px, 4vw, 40px);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 14px;
+        }
+        .behind .sub {
+            color: var(--text-dim);
+            font-size: 17px;
+            max-width: 550px;
+            margin: 0 auto 60px;
+        }
+        .capabilities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .cap-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px 22px;
+            text-align: left;
+            backdrop-filter: blur(10px);
+            transition: border-color 0.2s;
+        }
+        .cap-card:hover { border-color: var(--atlas-blue); }
+        .cap-card h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--atlas-blue);
+            margin-bottom: 10px;
+        }
+        .cap-card p { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+
+        /* FILOSOFÍA */
+        .filo-section {
+            padding: 100px 6%;
+            background: #000;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            position: relative; z-index: 1;
+        }
+        .filo-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(26px, 4vw, 40px);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 50px;
+        }
+        .filo-pair {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .filo-line {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(20px, 3vw, 30px);
+            font-weight: 800;
+            line-height: 1.3;
+        }
+        .filo-line.dim { color: rgba(255,255,255,0.3); }
+        .filo-line.bright { color: var(--text); }
+        .filo-sep { font-size: 14px; color: var(--text-dim); letter-spacing: 1px; margin: 4px 0; }
+
+        /* Footer */
+        footer {
+            padding: 50px 6%;
+            border-top: 1px solid var(--border);
+            position: relative; z-index: 1;
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .footer-logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: 3px;
+            color: var(--text);
+        }
+        .footer-logo span { color: var(--atlas-blue); }
+        .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--text); }
+        .footer-links a.hl { color: var(--atlas-blue); }
+        .footer-copy { font-size: 13px; color: var(--text-dim); text-align: center; padding-top: 30px; border-top: 1px solid var(--border); }
+
+        /* WhatsApp */
+        .wa-btn {
+            position: fixed; bottom: 28px; right: 28px;
+            background: #25d366; color: #fff;
+            border-radius: 50px; padding: 12px 22px;
+            font-weight: 700; font-size: 14px;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            display: flex; align-items: center; gap: 10px;
+            z-index: 1000; transition: transform 0.2s;
+        }
+        .wa-btn:hover { transform: scale(1.05); }
+        .wa-btn svg { width: 20px; height: 20px; fill: white; }
+
+        @media (max-width: 768px) {
+            .steps-grid { flex-direction: column; }
+            .step-card:first-child { border-radius: 12px 12px 0 0; }
+            .step-card:last-child { border-radius: 0 0 12px 12px; }
+            .step-card:not(:last-child) { border-right: 1px solid var(--border); border-bottom: none; }
+            .step-arrow { transform: rotate(90deg); }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="index.html" class="logo">ATLAS<span>.</span></a>
-        <nav style="display: flex; align-items: center; flex-wrap: wrap; gap: 10px;">
-            <a href="como-funciona.html" style="color: var(--accent-blue); text-decoration: none; margin-left: 20px; transition: 0.3s; font-weight: bold;">Cómo funciona</a>
-            <a href="para-quien.html" style="color: white; text-decoration: none; margin-left: 20px; transition: 0.3s;" onmouseover="this.style.color='var(--accent-blue)'" onmouseout="this.style.color='white'">Para quién es</a>
-            <a href="index.html#filosofia" style="color: white; text-decoration: none; margin-left: 20px; transition: 0.3s;" onmouseover="this.style.color='var(--accent-blue)'" onmouseout="this.style.color='white'">Filosofía</a>
-            <a href="index.html#vision" style="color: white; text-decoration: none; margin-left: 20px; transition: 0.3s;" onmouseover="this.style.color='var(--accent-blue)'" onmouseout="this.style.color='white'">Visión</a>
-            <a href="contacto.html" style="color: white; text-decoration: none; margin-left: 20px; font-weight: bold; background: var(--accent-blue); padding: 8px 15px; border-radius: 5px; transition: 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Contacto</a>
+        <a href="index.html" class="logo">ATLAS<span>.</span><small>Tu Director Comercial</small></a>
+        <nav>
+            <a href="como-funciona.html" class="active">Cómo funciona</a>
+            <a href="para-quien.html">Para quién es</a>
+            <a href="index.html#filosofia">Filosofía</a>
+            <a href="index.html#manifiesto">Manifiesto</a>
+            <a href="contacto.html" class="btn-nav">Solicitar demo</a>
         </nav>
     </header>
 
-    <section style="padding: 100px 5%; text-align: center; background: rgba(0, 163, 255, 0.02); min-height: 70vh; display: flex; flex-direction: column; justify-content: center;">
-        <h2 style="font-size: 42px; margin-bottom: 10px;">¿Cómo funciona?</h2>
-        <p style="color: var(--text-dim); font-size: 22px; margin-bottom: 70px;">En solo tres pasos.</p>
-        
-        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; max-width: 1100px; margin: 0 auto; align-items: stretch;">
-            <!-- Paso 1 -->
-            <div style="flex: 1; min-width: 280px; background: var(--card-bg); padding: 50px 30px; border-radius: 12px; border: 1px solid #30363d; display: flex; flex-direction: column; align-items: center; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
-                <div style="background: rgba(0,163,255,0.1); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 30px;">
-                    <svg style="width: 40px; height: 40px; fill: var(--accent-blue);" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+    <section class="hero">
+        <div class="section-label">El proceso</div>
+        <h1>Tres pasos.<br>Decisiones claras.</h1>
+        <p class="hero-sub">Atlas transforma datos complejos en acciones simples. Sin análisis interminables. Sin hojas de cálculo. Sin perder tiempo.</p>
+    </section>
+
+    <section class="steps-section">
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-num">Paso 01</div>
+                <div class="step-icon">
+                    <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
                 </div>
-                <h3 style="margin-top: 0; color: var(--text-main); font-size: 26px;">Paso 1</h3>
-                <p style="color: var(--text-dim); font-size: 18px; margin: 0;">Sube el reporte de Mercado Libre.</p>
-            </div>
-            
-            <div class="step-arrow" style="display: flex; align-items: center; justify-content: center; color: var(--accent-blue);">
-                <svg style="width: 40px; height: 40px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                <h3>Importas tu información.</h3>
+                <p>Sube el reporte de tu operación. Atlas acepta datos de Mercado Libre, Shopify, hojas de cálculo y más. Un archivo. Un clic.</p>
             </div>
 
-            <!-- Paso 2 -->
-            <div style="flex: 1; min-width: 280px; background: var(--card-bg); padding: 50px 30px; border-radius: 12px; border: 1px solid #30363d; display: flex; flex-direction: column; align-items: center; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
-                <div style="background: rgba(0,163,255,0.1); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 30px;">
-                    <svg style="width: 40px; height: 40px; fill: var(--accent-blue);" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
-                </div>
-                <h3 style="margin-top: 0; color: var(--text-main); font-size: 26px;">Paso 2</h3>
-                <p style="color: var(--text-dim); font-size: 18px; margin: 0;">Atlas analiza miles de datos.</p>
+            <div class="step-arrow">
+                <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
             </div>
 
-            <div class="step-arrow" style="display: flex; align-items: center; justify-content: center; color: var(--accent-blue);">
-                <svg style="width: 40px; height: 40px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+            <div class="step-card">
+                <div class="step-num">Paso 02</div>
+                <div class="step-icon">
+                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+                </div>
+                <h3>Atlas analiza miles de datos.</h3>
+                <p>Márgenes, rotación, capital inmovilizado, tendencias, riesgos de proveedor. Atlas cruza todo en segundos para que tú no tengas que hacerlo.</p>
             </div>
 
-            <!-- Paso 3 -->
-            <div style="flex: 1; min-width: 280px; background: var(--card-bg); padding: 50px 30px; border-radius: 12px; border: 1px solid #30363d; display: flex; flex-direction: column; align-items: center; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
-                <div style="background: rgba(0,163,255,0.1); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 30px;">
-                    <svg style="width: 40px; height: 40px; fill: var(--accent-blue);" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            <div class="step-arrow">
+                <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+            </div>
+
+            <div class="step-card">
+                <div class="step-num">Paso 03</div>
+                <div class="step-icon">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
                 </div>
-                <h3 style="margin-top: 0; color: var(--text-main); font-size: 26px;">Paso 3</h3>
-                <p style="color: var(--text-dim); font-size: 18px; margin: 0; margin-bottom: 20px;">Recibe decisiones claras.</p>
-                <div style="text-align: center; color: var(--text-main); font-size: 16px; font-weight: bold; line-height: 2;">
-                    Comprar.<br>Liquidar.<br>Subir precio.<br>Cambiar proveedor.<br><span style="color: var(--accent-blue); font-size: 20px;">Fin.</span>
+                <h3>Recibes decisiones claras.</h3>
+                <p>No reportes. No gráficos infinitos. Acciones concretas para hoy.</p>
+                <div class="step-result">
+                    Comprar.<br>Liquidar.<br>Ajustar precio.<br>Cambiar proveedor.<br><span>Fin.</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div style="margin-bottom: 30px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
-            <a href="https://www.instagram.com/atlastudirectorcomercial" target="_blank" style="color: var(--text-main); text-decoration: none; font-weight: bold; transition: 0.3s; opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">Instagram (@atlastudirectorcomercial)</a>
-            <a href="https://wa.me/56941375819" target="_blank" style="color: var(--accent-blue); text-decoration: none; font-weight: bold; transition: 0.3s; opacity: 0.9;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.9'">WhatsApp (+56 9 4137 5819)</a>
-            <a href="#" style="color: var(--text-main); text-decoration: none; font-weight: bold; transition: 0.3s; opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">LinkedIn</a>
-            <a href="#" style="color: var(--text-main); text-decoration: none; font-weight: bold; transition: 0.3s; opacity: 0.8;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">TikTok</a>
+    <section class="behind">
+        <div class="section-label">Lo que Atlas hace por ti</div>
+        <h2>Inteligencia comercial.<br>Decisiones sin esfuerzo.</h2>
+        <p class="sub">Cada análisis de Atlas está diseñado para que tu negocio gane dinero o evite perderlo.</p>
+        <div class="capabilities">
+            <div class="cap-card">
+                <h4>Capital inmovilizado</h4>
+                <p>Atlas detecta el dinero detenido en tu inventario y te dice cómo liberarlo hoy.</p>
+            </div>
+            <div class="cap-card">
+                <h4>Control de márgenes</h4>
+                <p>Identifica los productos que más y menos ganan. Ajusta precios con datos, no con intuición.</p>
+            </div>
+            <div class="cap-card">
+                <h4>Alertas de riesgo</h4>
+                <p>Proveedores que suben costos, stock por agotarse, productos sin movimiento. Atlas te avisa antes.</p>
+            </div>
+            <div class="cap-card">
+                <h4>Estrategia de compras</h4>
+                <p>Atlas analiza tendencias y te recomienda qué reabastecer y cuánto para no quedarte sin stock.</p>
+            </div>
+            <div class="cap-card">
+                <h4>Recomendaciones de liquidación</h4>
+                <p>Productos que no se venden se convierten en capital perdido. Atlas te dice cuáles liquidar y cómo.</p>
+            </div>
+            <div class="cap-card">
+                <h4>Visión general del negocio</h4>
+                <p>Cada mañana tienes un panorama completo de tu salud comercial. Listo en segundos.</p>
+            </div>
         </div>
-        <p>&copy; 2024 Atlas - Tu Director Comercial. Democratizando la inteligencia comercial.</p>
+    </section>
+
+    <section class="filo-section">
+        <div class="section-label">Nuestra filosofía</div>
+        <h2>La tecnología no debe<br>generar más trabajo.</h2>
+        <div class="filo-pair">
+            <div class="filo-line dim">La tecnología genera más trabajo.</div>
+            <div class="filo-sep">→ Atlas lo corrige:</div>
+            <div class="filo-line bright">La tecnología debe eliminarlo.</div>
+
+            <div style="height: 30px;"></div>
+
+            <div class="filo-line dim">Los datos no sirven de nada.</div>
+            <div class="filo-sep">→ Atlas los transforma:</div>
+            <div class="filo-line bright">Los datos deben generar decisiones.</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">ATLAS<span>.</span></div>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/atlastudirectorcomercial" target="_blank">Instagram</a>
+                <a href="https://wa.me/56941375819" target="_blank" class="hl">WhatsApp</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">TikTok</a>
+            </div>
+        </div>
+        <div class="footer-copy">&copy; 2026 Atlas &mdash; Tu Director Comercial. Democratizando la inteligencia comercial en Latinoamérica.</div>
     </footer>
 
-    <!-- Botón Flotante WhatsApp -->
-    <a href="https://wa.me/56941375819" target="_blank" style="position: fixed; bottom: 25px; right: 25px; background-color: #25d366; color: white; border-radius: 50px; padding: 12px 20px; font-weight: bold; font-size: 15px; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.4); display: flex; align-items: center; gap: 10px; z-index: 1000; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-        <svg style="width: 22px; height: 22px; fill: white;" viewBox="0 0 24 24"><path d="M12.031 0C5.385 0 0 5.384 0 12.031c0 2.122.553 4.195 1.604 6.014L.044 24l6.109-1.602c1.761.96 3.753 1.464 5.878 1.464 6.646 0 12.031-5.385 12.031-12.031S18.677 0 12.031 0zm0 22.028c-1.848 0-3.661-.497-5.247-1.439l-.376-.223-3.896 1.021 1.039-3.797-.245-.39A9.972 9.972 0 012.03 12.03c0-5.514 4.486-10 10.001-10 5.514 0 10 4.486 10 10 0 5.514-4.486 9.998-10 9.998z"/></svg>
+    <a href="https://wa.me/56941375819" target="_blank" class="wa-btn">
+        <svg viewBox="0 0 24 24"><path d="M12.031 0C5.385 0 0 5.384 0 12.031c0 2.122.553 4.195 1.604 6.014L.044 24l6.109-1.602c1.761.96 3.753 1.464 5.878 1.464 6.646 0 12.031-5.385 12.031-12.031S18.677 0 12.031 0zm0 22.028c-1.848 0-3.661-.497-5.247-1.439l-.376-.223-3.896 1.021 1.039-3.797-.245-.39A9.972 9.972 0 012.03 12.03c0-5.514 4.486-10 10.001-10 5.514 0 10 4.486 10 10 0 5.514-4.486 9.998-10 9.998z"/></svg>
         WhatsApp
     </a>
 
