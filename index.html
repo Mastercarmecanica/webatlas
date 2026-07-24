@@ -576,27 +576,167 @@
         .wa-btn:hover { transform: scale(1.05); }
         .wa-btn svg { width: 20px; height: 20px; fill: white; }
 
+        /* ── MOBILE ── */
         @media (max-width: 768px) {
-            .stat-item { border-right: none; border-bottom: 1px solid var(--border); padding: 30px 40px; }
-            .stat-item:last-child { border-bottom: none; }
+
+            /* Header: hamburger menu */
+            header { padding: 16px 5%; position: relative; }
+            .logo { font-size: 18px; letter-spacing: 2px; }
+            .logo small { display: none; }
+
+            /* Hamburger button */
+            .nav-toggle {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                cursor: pointer;
+                background: none;
+                border: none;
+                padding: 4px;
+                z-index: 100;
+            }
+            .nav-toggle span {
+                display: block;
+                width: 24px;
+                height: 2px;
+                background: var(--text);
+                border-radius: 2px;
+                transition: all 0.3s;
+            }
+
+            /* Nav móvil */
+            nav {
+                display: none;
+                position: fixed;
+                top: 0; left: 0;
+                width: 100%; height: 100vh;
+                background: rgba(9, 12, 16, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 28px;
+                z-index: 50;
+            }
+            nav.open { display: flex; }
+            nav a {
+                font-family: 'Outfit', sans-serif;
+                font-size: 22px;
+                font-weight: 700;
+                padding: 8px 20px;
+                color: var(--text-dim);
+            }
+            nav a.btn-nav {
+                font-size: 18px;
+                padding: 14px 40px;
+                border-radius: 8px;
+            }
+
+            /* HERO compacto */
+            .hero { padding: 70px 5% 50px; }
+            .hero-eyebrow { font-size: 9px; padding: 4px 10px; margin-bottom: 16px; }
+            h1 { font-size: 34px; letter-spacing: -1px; margin-bottom: 18px; }
+            .hero-sub { font-size: 15px; margin-bottom: 28px; }
+            .btn-primary { padding: 14px 32px; font-size: 15px; }
+            .hero-note { font-size: 12px; margin-top: 16px; }
+            .video-wrap { margin-top: 40px; border-radius: 10px; }
+
+            /* ATLAS HABLA: solo 3 mensajes en mobile */
+            .atlas-habla { padding: 60px 5%; }
+            .atlas-habla h2 { font-size: 26px; }
+            .atlas-habla .section-desc { font-size: 14px; margin-bottom: 32px; }
+            .messages-container { gap: 12px; }
+            .msg-atlas { padding: 14px 16px; }
+            .msg-atlas .msg-text { font-size: 14px; }
+            /* Ocultar mensajes 4 y 5 en mobile */
+            .msg-atlas:nth-child(5),
+            .msg-atlas:nth-child(6) { display: none; }
+
+            /* POSICIONAMIENTO compacto */
+            .positioning { padding: 60px 5%; }
+            .not-list { gap: 10px; margin: 28px auto; }
+            .not-item { font-size: 16px; }
             .not-arrow { display: none; }
+            .positioning-claim { font-size: 28px; margin-top: 10px; }
+
+            /* STATS: vertical, más compacto */
+            .stats-bar { padding: 0; flex-direction: column; }
+            .stat-item {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding: 24px 30px;
+                width: 100%;
+            }
+            .stat-item:last-child { border-bottom: none; }
+            .stat-number { font-size: 36px; }
+
+            /* TIMELINE compacto */
+            .timeline-section { padding: 60px 5%; }
+            .timeline-section h2 { font-size: 26px; }
+            .timeline { grid-template-columns: 1fr; gap: 12px; }
+            .t-item { padding: 20px 18px; }
+            .t-item strong { font-size: 15px; }
+            .t-item p { font-size: 13px; }
+
+            /* VALORES compacto */
+            .valores { padding: 60px 5%; }
+            .valores h2 { font-size: 26px; }
+            .valores-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .valor-card { padding: 20px 16px; }
+            .valor-icon { font-size: 22px; margin-bottom: 12px; }
+            .valor-card h3 { font-size: 16px; margin-bottom: 6px; }
+            .valor-card p { font-size: 12px; }
+
+            /* MANIFIESTO compacto */
+            .manifiesto { padding: 70px 5%; }
+            .manifesto-line { font-size: 16px; gap: 18px; }
+            .manifesto-line.highlight { font-size: 18px; }
+            .manifesto-line.cta { font-size: 28px; margin-top: 16px; }
+            .manifesto-lines { gap: 18px; }
+
+            /* FILOSOFÍA compacto */
+            .filosofia { padding: 60px 5%; }
+            .filosofia h2 { font-size: 26px; }
+            .filo-grid { grid-template-columns: 1fr; gap: 2px; }
+            .filo-item { padding: 28px 20px; }
             .filo-item:first-child, .filo-item:last-child { border-radius: 0; }
-            .footer-inner { flex-direction: column; align-items: flex-start; }
+            .filo-before { font-size: 12px; }
+            .filo-after { font-size: 17px; }
+
+            /* FOOTER compacto */
+            footer { padding: 40px 5%; }
+            .footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .footer-links { gap: 16px; }
+            .footer-copy { font-size: 12px; }
+
+            /* WhatsApp btn más pequeño en mobile */
+            .wa-btn { bottom: 16px; right: 16px; padding: 10px 16px; font-size: 13px; }
+
+            /* Section labels más pequeños */
+            .section-label { font-size: 9px; margin-bottom: 12px; }
         }
+
+        /* Hamburger: oculto en desktop */
+        .nav-toggle { display: none; }
+
     </style>
 </head>
 <body>
 
     <header>
         <a href="#" class="logo">ATLAS<span>.</span><small>Tu Director Comercial</small></a>
-        <nav>
-            <a href="como-funciona.html">Cómo funciona</a>
-            <a href="para-quien.html">Para quién es</a>
-            <a href="#filosofia">Filosofía</a>
-            <a href="#manifiesto">Manifiesto</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+        <nav id="mainNav">
+            <a href="como-funciona.html" onclick="closeNav()">Cómo funciona</a>
+            <a href="para-quien.html" onclick="closeNav()">Para quién es</a>
+            <a href="#filosofia" onclick="closeNav()">Filosofía</a>
+            <a href="#manifiesto" onclick="closeNav()">Manifiesto</a>
             <a href="contacto.html" class="btn-nav">Solicitar demo</a>
         </nav>
     </header>
+
 
     <!-- ── HERO ── -->
     <section class="hero">
@@ -850,6 +990,34 @@
         }, { threshold: 0.1 });
         const manifestoSection = document.getElementById('manifestoLines');
         if (manifestoSection) obsManifesto.observe(manifestoSection);
+
+        // Hamburger menu
+        const navToggle = document.getElementById('navToggle');
+        const mainNav   = document.getElementById('mainNav');
+        navToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('open');
+            const isOpen = mainNav.classList.contains('open');
+            navToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+            // Animar líneas del hamburger → X
+            const spans = navToggle.querySelectorAll('span');
+            if (isOpen) {
+                spans[0].style.cssText = 'transform: rotate(45deg) translate(5px,5px)';
+                spans[1].style.cssText = 'opacity:0';
+                spans[2].style.cssText = 'transform: rotate(-45deg) translate(5px,-5px)';
+            } else {
+                spans.forEach(s => s.style.cssText = '');
+            }
+        });
+        function closeNav() {
+            mainNav.classList.remove('open');
+            navToggle.querySelectorAll('span').forEach(s => s.style.cssText = '');
+        }
+        // Cerrar nav al hacer click fuera
+        document.addEventListener('click', (e) => {
+            if (!mainNav.contains(e.target) && !navToggle.contains(e.target)) {
+                closeNav();
+            }
+        });
     </script>
 
 </body>
