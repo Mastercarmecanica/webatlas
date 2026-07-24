@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filosofía | Atlas — Tu Director Comercial</title>
+    <meta name="description" content="La filosofía detrás de Atlas. La tecnología no debe generar más trabajo. Debe eliminarlo.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg:         #090c10;
+            --bg-card:    rgba(17, 22, 30, 0.75);
+            --atlas-blue: #00a3ff;
+            --atlas-blue2:#0077cc;
+            --text:       #ffffff;
+            --text-dim:   #8b949e;
+            --border:     #21262d;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 50%; left: 50%;
+            width: 100vw; height: 100vh;
+            transform: translate(-50%, -50%);
+            background-image: url('logo atlas actualizada.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 65%;
+            opacity: 0.05;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* HEADER */
+        header {
+            padding: 20px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            position: relative; z-index: 10;
+        }
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            letter-spacing: 3px;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .logo span { color: var(--atlas-blue); }
+        .logo small {
+            display: block;
+            font-size: 9px;
+            letter-spacing: 2.5px;
+            color: var(--text-dim);
+            font-weight: 400;
+            margin-top: -4px;
+        }
+        nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        nav a { color: var(--text-dim); text-decoration: none; padding: 6px 14px; font-size: 14px; transition: color 0.2s; }
+        nav a:hover { color: var(--text); }
+        nav a.active { color: var(--atlas-blue); font-weight: 700; }
+        nav a.btn-nav { background: var(--atlas-blue); color: #fff; border-radius: 6px; font-weight: 700; padding: 8px 18px; }
+        nav a.btn-nav:hover { background: var(--atlas-blue2); }
+
+        /* HERO */
+        .hero {
+            padding: 110px 6% 70px;
+            text-align: center;
+            position: relative; z-index: 1;
+        }
+        .section-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--atlas-blue);
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(38px, 5vw, 64px);
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1.05;
+            background: linear-gradient(160deg, #ffffff 30%, #6699bb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 22px;
+        }
+        .hero-sub {
+            font-size: 18px;
+            color: var(--text-dim);
+            max-width: 560px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* MANIFIESTO */
+        .manifiesto {
+            padding: 100px 6%;
+            background: #000;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+            position: relative; z-index: 1;
+        }
+        .manifiesto .section-label { margin-bottom: 60px; }
+        .manifesto-lines {
+            max-width: 760px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+        .manifesto-line {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(22px, 3.5vw, 36px);
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.35;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .manifesto-line.visible { opacity: 1; transform: translateY(0); }
+        .manifesto-line.highlight { font-weight: 800; }
+        .manifesto-line.cta {
+            margin-top: 20px;
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+        .manifesto-line.cta span { color: var(--atlas-blue); }
+
+        /* FILOSOFÍA */
+        .filosofia-section {
+            padding: 100px 6%;
+            text-align: center;
+            position: relative; z-index: 1;
+        }
+        .filosofia-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(30px, 4vw, 48px);
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 60px;
+            line-height: 1.1;
+        }
+        .filo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 3px;
+            max-width: 960px;
+            margin: 0 auto 80px;
+        }
+        .filo-item {
+            padding: 48px 32px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            transition: border-color 0.2s;
+        }
+        .filo-item:hover { border-color: var(--atlas-blue); }
+        .filo-item:first-child { border-radius: 12px 0 0 12px; }
+        .filo-item:last-child { border-radius: 0 12px 12px 0; }
+        .filo-before {
+            font-size: 14px;
+            color: var(--text-dim);
+            margin-bottom: 14px;
+            text-decoration: line-through;
+            text-decoration-color: rgba(139,148,158,0.4);
+        }
+        .filo-arrow {
+            font-size: 18px;
+            color: var(--atlas-blue);
+            margin-bottom: 14px;
+        }
+        .filo-after {
+            font-family: 'Outfit', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text);
+            line-height: 1.3;
+        }
+
+        /* PROPÓSITO */
+        .proposito {
+            padding: 100px 6%;
+            background: #000;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            position: relative; z-index: 1;
+        }
+        .proposito h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            margin-bottom: 30px;
+        }
+        .proposito p {
+            font-size: 18px;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: 0 auto 50px;
+            line-height: 1.7;
+        }
+        .proposito-frase {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(20px, 3vw, 32px);
+            font-weight: 800;
+            color: var(--atlas-blue);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 100px 6%;
+            text-align: center;
+            position: relative; z-index: 1;
+            border-top: 1px solid var(--border);
+        }
+        .cta-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            margin-bottom: 18px;
+        }
+        .cta-section p { font-size: 17px; color: var(--text-dim); margin-bottom: 40px; }
+        .btn-primary {
+            background: var(--atlas-blue);
+            color: #fff;
+            padding: 16px 44px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+        .btn-primary:hover { background: var(--atlas-blue2); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,163,255,0.25); }
+
+        /* FOOTER */
+        footer { padding: 50px 6%; border-top: 1px solid var(--border); position: relative; z-index: 1; }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; margin-bottom: 30px; }
+        .footer-logo { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 18px; letter-spacing: 3px; color: var(--text); }
+        .footer-logo span { color: var(--atlas-blue); }
+        .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--text); }
+        .footer-links a.hl { color: var(--atlas-blue); }
+        .footer-copy { font-size: 13px; color: var(--text-dim); text-align: center; padding-top: 30px; border-top: 1px solid var(--border); }
+
+        .wa-btn {
+            position: fixed; bottom: 28px; right: 28px;
+            background: #25d366; color: #fff;
+            border-radius: 50px; padding: 12px 22px;
+            font-weight: 700; font-size: 14px;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            display: flex; align-items: center; gap: 10px;
+            z-index: 1000; transition: transform 0.2s;
+        }
+        .wa-btn:hover { transform: scale(1.05); }
+        .wa-btn svg { width: 20px; height: 20px; fill: white; }
+
+        /* MOBILE */
+        .nav-toggle { display: none; }
+        @media (max-width: 768px) {
+            header { padding: 16px 5%; }
+            .logo small { display: none; }
+            .nav-toggle {
+                display: flex; flex-direction: column; gap: 5px;
+                cursor: pointer; background: none; border: none; padding: 4px; z-index: 100;
+            }
+            .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+            nav { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(9,12,16,0.98); backdrop-filter: blur(20px); flex-direction: column; align-items: center; justify-content: center; gap: 28px; z-index: 50; }
+            nav.open { display: flex; }
+            nav a { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 700; padding: 8px 20px; color: var(--text-dim); }
+            nav a.btn-nav { font-size: 18px; padding: 14px 40px; }
+            .hero { padding: 70px 5% 50px; }
+            h1 { font-size: 34px; }
+            .filo-grid { grid-template-columns: 1fr; gap: 2px; }
+            .filo-item:first-child { border-radius: 12px 12px 0 0; }
+            .filo-item:last-child { border-radius: 0 0 12px 12px; }
+            .manifesto-line { font-size: clamp(18px, 5vw, 24px); }
+            .manifesto-line.cta { font-size: clamp(26px, 7vw, 38px); }
+            .footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">ATLAS<span>.</span><small>Tu Director Comercial</small></a>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+        <nav id="mainNav">
+            <a href="como-funciona.html" onclick="closeNav()">Cómo funciona</a>
+            <a href="para-quien.html" onclick="closeNav()">Para quién es</a>
+            <a href="filosofia.html" class="active" onclick="closeNav()">Filosofía</a>
+            <a href="contacto.html" class="btn-nav">Solicitar demo</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="section-label">Filosofía y Manifiesto</div>
+        <h1>Lo que creemos.<br>Cómo pensamos.</h1>
+        <p class="hero-sub">Atlas no es solo un sistema. Es una postura sobre cómo deben funcionar los negocios y la tecnología.</p>
+    </section>
+
+    <!-- MANIFIESTO -->
+    <section class="manifiesto">
+        <div class="section-label">Manifiesto</div>
+        <div class="manifesto-lines" id="manifestoLines">
+            <div class="manifesto-line highlight">Creemos que ningún negocio debería tomar decisiones importantes basándose únicamente en la intuición.</div>
+            <div class="manifesto-line">Creemos que la información solo tiene valor cuando se convierte en acción.</div>
+            <div class="manifesto-line">Creemos que la tecnología debe liberar tiempo, no consumirlo.</div>
+            <div class="manifesto-line">Creemos que un pequeño negocio merece las mismas herramientas que una gran empresa.</div>
+            <div class="manifesto-line highlight">Por eso existe Atlas.</div>
+            <div class="manifesto-line">Para analizar mientras tú vendes.</div>
+            <div class="manifesto-line">Para ayudarte a decidir.</div>
+            <div class="manifesto-line">Para hacer crecer tu negocio.</div>
+            <div class="manifesto-line cta">Atlas. <span>Tu Director Comercial.</span></div>
+        </div>
+    </section>
+
+    <!-- FILOSOFÍA -->
+    <section class="filosofia-section" id="filosofia">
+        <div class="section-label">Filosofía</div>
+        <h2>La forma correcta<br>de administrar un negocio.</h2>
+        <div class="filo-grid">
+            <div class="filo-item">
+                <div class="filo-before">La tecnología genera más trabajo.</div>
+                <div class="filo-arrow">↓</div>
+                <div class="filo-after">La tecnología debe eliminarlo.</div>
+            </div>
+            <div class="filo-item">
+                <div class="filo-before">Los datos generan más reportes.</div>
+                <div class="filo-arrow">↓</div>
+                <div class="filo-after">Los datos deben generar decisiones.</div>
+            </div>
+            <div class="filo-item">
+                <div class="filo-before">La inteligencia comercial es para grandes empresas.</div>
+                <div class="filo-arrow">↓</div>
+                <div class="filo-after">Atlas democratiza esa inteligencia.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROPÓSITO -->
+    <section class="proposito">
+        <div class="section-label">Propósito</div>
+        <h2>Por qué existe Atlas.</h2>
+        <p>Millones de pequeñas y medianas empresas toman decisiones comerciales importantes todos los días con información incompleta. No porque sean malos empresarios. Porque nunca tuvieron acceso a las herramientas correctas.</p>
+        <div class="proposito-frase">
+            "Dar a cualquier negocio el poder de decisión que antes solo tenían las grandes empresas."
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Comparte esta filosofía.</h2>
+        <p>Si crees que tu negocio merece mejores decisiones, Atlas fue creado para ti.</p>
+        <a href="contacto.html" class="btn-primary">Solicitar una demostración</a>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">ATLAS<span>.</span></div>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/atlastudirectorcomercial" target="_blank">Instagram</a>
+                <a href="https://wa.me/56941375819" target="_blank" class="hl">WhatsApp</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">TikTok</a>
+            </div>
+        </div>
+        <div class="footer-copy">&copy; 2026 Atlas &mdash; Tu Director Comercial. Democratizando la inteligencia comercial en Latinoamérica.</div>
+    </footer>
+
+    <a href="https://wa.me/56941375819" target="_blank" class="wa-btn">
+        <svg viewBox="0 0 24 24"><path d="M12.031 0C5.385 0 0 5.384 0 12.031c0 2.122.553 4.195 1.604 6.014L.044 24l6.109-1.602c1.761.96 3.753 1.464 5.878 1.464 6.646 0 12.031-5.385 12.031-12.031S18.677 0 12.031 0zm0 22.028c-1.848 0-3.661-.497-5.247-1.439l-.376-.223-3.896 1.021 1.039-3.797-.245-.39A9.972 9.972 0 012.03 12.03c0-5.514 4.486-10 10.001-10 5.514 0 10 4.486 10 10 0 5.514-4.486 9.998-10 9.998z"/></svg>
+        WhatsApp
+    </a>
+
+    <script>
+        // Animación manifiesto
+        const lines = document.querySelectorAll('.manifesto-line');
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    lines.forEach((l, i) => setTimeout(() => l.classList.add('visible'), i * 220));
+                    obs.disconnect();
+                }
+            });
+        }, { threshold: 0.1 });
+        if (lines.length) obs.observe(lines[0]);
+
+        // Hamburger
+        const navToggle = document.getElementById('navToggle');
+        const mainNav   = document.getElementById('mainNav');
+        navToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('open');
+            const isOpen = mainNav.classList.contains('open');
+            const spans = navToggle.querySelectorAll('span');
+            if (isOpen) {
+                spans[0].style.cssText = 'transform: rotate(45deg) translate(5px,5px)';
+                spans[1].style.cssText = 'opacity:0';
+                spans[2].style.cssText = 'transform: rotate(-45deg) translate(5px,-5px)';
+            } else { spans.forEach(s => s.style.cssText = ''); }
+        });
+        function closeNav() {
+            mainNav.classList.remove('open');
+            navToggle.querySelectorAll('span').forEach(s => s.style.cssText = '');
+        }
+        document.addEventListener('click', (e) => {
+            if (!mainNav.contains(e.target) && !navToggle.contains(e.target)) closeNav();
+        });
+    </script>
+
+</body>
+</html>
