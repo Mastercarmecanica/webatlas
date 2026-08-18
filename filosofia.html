@@ -115,15 +115,6 @@
             text-align: center;
             position: relative; z-index: 1;
         }
-        .manifiesto .section-label {
-            font-family: 'Outfit', sans-serif;
-            font-size: 15px;
-            font-weight: 900;
-            letter-spacing: 4px;
-            color: var(--atlas-blue);
-            text-transform: uppercase;
-            margin-bottom: 24px;
-        }
         .manifesto-lines {
             max-width: 760px;
             margin: 0 auto;
@@ -308,6 +299,7 @@
             .manifesto-line { font-size: clamp(18px, 5vw, 24px); }
             .manifesto-line.cta { font-size: clamp(26px, 7vw, 38px); }
             .footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .wa-btn { bottom: 16px; right: 16px; padding: 10px 16px; font-size: 13px; }
         }
     </style>
 </head>
@@ -321,8 +313,10 @@
         <nav id="mainNav">
             <a href="como-funciona.html" onclick="closeNav()">Cómo funciona</a>
             <a href="para-quien.html" onclick="closeNav()">Para quién es</a>
+            <a href="valores.html" onclick="closeNav()">Valores</a>
             <a href="filosofia.html" class="active" onclick="closeNav()">Filosofía</a>
-            <a href="contacto.html" class="btn-nav">Solicitar demo</a>
+            <a href="contacto.html" onclick="closeNav()">Contáctanos</a>
+            <a href="descargar.html" class="btn-nav" onclick="closeNav()">Descargar Demo</a>
         </nav>
     </header>
 
@@ -386,7 +380,7 @@
     <section class="cta-section">
         <h2>Comparte esta filosofía.</h2>
         <p>Si crees que tu negocio merece mejores decisiones, Atlas fue creado para ti.</p>
-        <a href="contacto.html" class="btn-primary">Solicitar una demostración</a>
+        <a href="descargar.html" class="btn-primary">Descargar Demostración</a>
     </section>
 
     <footer>
@@ -396,6 +390,8 @@
                 <a href="https://www.instagram.com/atlastudirectorcomercial" target="_blank">Instagram</a>
                 <a href="https://wa.me/56941375819" target="_blank" class="hl">WhatsApp</a>
                 <a href="#">TikTok</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="descargar.html" class="hl">Descargar Demo</a>
             </div>
         </div>
         <div class="footer-copy">&copy; 2026 Atlas &mdash; Tu Director Comercial. Democratizando la inteligencia comercial en Latinoamérica.</div>

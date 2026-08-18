@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descargar Atlas | Demostración Oficial</title>
+    <meta name="description" content="Solicita tu demostración y descarga Atlas: Tu Director Comercial. Descarga el instalador para Windows, la Plantilla de Control en Excel y el Manual de Instalación.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg:          #090c10;
+            --bg-card:     rgba(17, 22, 30, 0.85);
+            --atlas-blue:  #00a3ff;
+            --atlas-blue2: #0077cc;
+            --text:        #ffffff;
+            --text-dim:    #8b949e;
+            --border:      #21262d;
+            --accent-green:#10b981;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Watermark fondo */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 50%; left: 50%;
+            width: 100vw; height: 100vh;
+            transform: translate(-50%, -50%);
+            background-image: url('logo atlas actualizada.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 65%;
+            opacity: 0.05;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* HEADER */
+        header {
+            padding: 20px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            z-index: 10;
+        }
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            letter-spacing: 3px;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .logo span { color: var(--atlas-blue); }
+        .logo small {
+            display: block;
+            font-size: 9px;
+            letter-spacing: 2.5px;
+            color: var(--text-dim);
+            font-weight: 400;
+            margin-top: -4px;
+        }
+        nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 6px 14px;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--text); }
+        nav a.active { color: var(--text); font-weight: 600; }
+        nav a.btn-nav {
+            background: var(--atlas-blue);
+            color: #fff;
+            border-radius: 6px;
+            font-weight: 700;
+            padding: 8px 18px;
+        }
+        nav a.btn-nav:hover { background: var(--atlas-blue2); color: #fff; }
+
+        /* HERO */
+        .hero {
+            padding: 90px 6% 40px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .section-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: var(--atlas-blue);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(34px, 5vw, 56px);
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            line-height: 1.12;
+            background: linear-gradient(160deg, #ffffff 30%, #6699bb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 18px;
+        }
+        .hero-sub {
+            font-size: 18px;
+            color: var(--text-dim);
+            max-width: 620px;
+            margin: 0 auto 30px;
+            font-weight: 300;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 960px;
+            margin: 0 auto 100px;
+            padding: 0 6%;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* FORM BOX */
+        .form-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            backdrop-filter: blur(12px);
+            max-width: 580px;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .form-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+        .form-header p {
+            font-size: 14px;
+            color: var(--text-dim);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(9, 12, 16, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--atlas-blue);
+            box-shadow: 0 0 0 3px rgba(0, 163, 255, 0.15);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--atlas-blue);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .btn-submit:hover {
+            background: var(--atlas-blue2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 163, 255, 0.3);
+        }
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-footer-note {
+            font-size: 12px;
+            color: var(--text-dim);
+            text-align: center;
+            margin-top: 16px;
+        }
+
+        /* SUCCESS & DOWNLOAD SECTION */
+        #downloadArea {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .success-banner {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            margin-bottom: 35px;
+        }
+        .success-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .success-banner h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: #34d399;
+            margin-bottom: 6px;
+        }
+        .success-banner p {
+            font-size: 15px;
+            color: #d1fae5;
+        }
+
+        .downloads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .download-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 30px 26px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: border-color 0.2s, transform 0.2s;
+            position: relative;
+        }
+        .download-card:hover {
+            border-color: var(--atlas-blue);
+            transform: translateY(-4px);
+        }
+        .download-card.primary-card {
+            border-color: rgba(0, 163, 255, 0.4);
+            background: linear-gradient(180deg, rgba(0,163,255,0.06) 0%, rgba(17,22,30,0.95) 100%);
+        }
+
+        .card-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            align-self: flex-start;
+        }
+        .tag-blue { background: rgba(0,163,255,0.15); color: var(--atlas-blue); border: 1px solid rgba(0,163,255,0.3); }
+        .tag-green { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+        .tag-purple { background: rgba(168,85,247,0.15); color: #c084fc; border: 1px solid rgba(168,85,247,0.3); }
+
+        .download-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        .download-card p {
+            font-size: 14px;
+            color: var(--text-dim);
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .btn-download {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        .btn-download-primary {
+            background: var(--atlas-blue);
+            color: #ffffff;
+        }
+        .btn-download-primary:hover {
+            background: var(--atlas-blue2);
+            box-shadow: 0 8px 25px rgba(0, 163, 255, 0.3);
+        }
+        .btn-download-secondary {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--border);
+            color: #ffffff;
+        }
+        .btn-download-secondary:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: var(--atlas-blue);
+        }
+
+        /* VIDEO SECTION */
+        .tutorial-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 36px 30px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        .tutorial-box h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        .tutorial-box p {
+            color: var(--text-dim);
+            font-size: 15px;
+            max-width: 580px;
+            margin: 0 auto 24px;
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid rgba(0,163,255,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border: none;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 50px 6%;
+            border-top: 1px solid var(--border);
+            position: relative; z-index: 1;
+        }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; margin-bottom: 30px; }
+        .footer-logo { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 18px; letter-spacing: 3px; color: var(--text); }
+        .footer-logo span { color: var(--atlas-blue); }
+        .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--text); }
+        .footer-links a.hl { color: var(--atlas-blue); }
+        .footer-copy { font-size: 13px; color: var(--text-dim); text-align: center; padding-top: 30px; border-top: 1px solid var(--border); }
+
+        .wa-btn {
+            position: fixed; bottom: 28px; right: 28px;
+            background: #25d366; color: #fff;
+            border-radius: 50px; padding: 12px 22px;
+            font-weight: 700; font-size: 14px;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            display: flex; align-items: center; gap: 10px;
+            z-index: 1000; transition: transform 0.2s;
+        }
+        .wa-btn:hover { transform: scale(1.05); }
+        .wa-btn svg { width: 20px; height: 20px; fill: white; }
+
+        /* MOBILE */
+        .nav-toggle { display: none; }
+        @media (max-width: 768px) {
+            header { padding: 16px 5%; }
+            .logo small { display: none; }
+            .nav-toggle { display: flex; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; z-index: 100; }
+            .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+            nav { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(9,12,16,0.98); backdrop-filter: blur(20px); flex-direction: column; align-items: center; justify-content: center; gap: 28px; z-index: 50; }
+            nav.open { display: flex; }
+            nav a { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 700; padding: 8px 20px; color: var(--text-dim); }
+            nav a.btn-nav { font-size: 18px; padding: 14px 40px; }
+            .form-card { padding: 28px 20px; }
+            .hero { padding: 70px 5% 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">ATLAS<span>.</span><small>Tu Director Comercial</small></a>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+        <nav id="mainNav">
+            <a href="como-funciona.html" onclick="closeNav()">Cómo funciona</a>
+            <a href="para-quien.html" onclick="closeNav()">Para quién es</a>
+            <a href="valores.html" onclick="closeNav()">Valores</a>
+            <a href="filosofia.html" onclick="closeNav()">Filosofía</a>
+            <a href="contacto.html" onclick="closeNav()">Contáctanos</a>
+            <a href="descargar.html" class="btn-nav active" onclick="closeNav()">Descargar Demo</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="section-label">Demostración Oficial</div>
+        <h1>Prueba Atlas en tu negocio.</h1>
+        <p class="hero-sub">Completa el formulario para descargar inmediatamente el instalador oficial de Atlas, la plantilla de datos en Excel y el manual de configuración.</p>
+    </section>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="container">
+
+        <!-- FORMULARIO DE CAPTACIÓN -->
+        <div class="form-card" id="formWrapper">
+            <div class="form-header">
+                <h2>Solicitar Acceso y Descarga</h2>
+                <p>Ingresa tus datos para habilitar la descarga inmediata de Atlas v1.0.0:</p>
+            </div>
+
+            <form id="leadForm">
+                <!-- Configuración oculta para FormSubmit -->
+                <input type="hidden" name="_subject" value="Nuevo Lead de Demostración Atlas">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+
+                <div class="form-group">
+                    <label for="nombre">Nombre y Apellido *</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ej. Carlos Mendoza" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="empresa">Nombre de tu Negocio o Empresa *</label>
+                    <input type="text" id="empresa" name="empresa" class="form-control" placeholder="Ej. Distribuidora del Norte" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="whatsapp">WhatsApp con código de país *</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" class="form-control" placeholder="Ej. +56 9 4137 5819" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo Electrónico *</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="tu@empresa.com" required>
+                </div>
+
+                <button type="submit" class="btn-submit" id="btnSubmit">
+                    <span>Acceder a la Descarga</span>
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                </button>
+
+                <p class="form-footer-note">🔒 Tus datos están 100% seguros y serán utilizados exclusivamente para brindarte soporte con tu licencia de prueba.</p>
+            </form>
+        </div>
+
+        <!-- ÁREA DE DESCARGAS (DESBLOQUEADA TRAS FORMULARIO) -->
+        <div id="downloadArea">
+            
+            <div class="success-banner">
+                <span class="success-icon">🎉</span>
+                <h3>¡Tus datos han sido registrados con éxito!</h3>
+                <p>Tu descarga comenzará en unos segundos. También puedes hacer clic directamente en los botones a continuación:</p>
+            </div>
+
+            <div class="downloads-grid">
+                
+                <!-- Tarjeta 1: Software Atlas -->
+                <div class="download-card primary-card">
+                    <div>
+                        <span class="card-tag tag-blue">Windows 64-bit · v1.0.0</span>
+                        <h3>Atlas Setup (Instalador)</h3>
+                        <p>Software ejecutable de Atlas. Compatible con Windows 10 y Windows 11. Instalación en 1 clic.</p>
+                    </div>
+                    <a href="https://github.com/Mastercarmecanica/webatlas/releases/download/v1.0.0/AtlasSetup.exe" class="btn-download btn-download-primary" id="autoDownloadLink">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                        Descargar Atlas (.exe 133 MB)
+                    </a>
+                </div>
+
+                <!-- Tarjeta 2: Plantilla Excel -->
+                <div class="download-card">
+                    <div>
+                        <span class="card-tag tag-green">Plantilla Oficial · Excel</span>
+                        <h3>Plantilla de Control</h3>
+                        <p>Estructura en Excel lista para cargar tus productos, costos, ventas e inventario en Atlas.</p>
+                    </div>
+                    <a href="https://github.com/Mastercarmecanica/webatlas/releases/download/v1.0.0/Plantilla.de.Control.Atlas.xlsx" class="btn-download btn-download-secondary">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+                        Descargar Plantilla (.xlsx)
+                    </a>
+                </div>
+
+                <!-- Tarjeta 3: Manual PDF -->
+                <div class="download-card">
+                    <div>
+                        <span class="card-tag tag-purple">Guía Didáctica · PDF</span>
+                        <h3>Manual de Instalación</h3>
+                        <p>Manual paso a paso de instalación, activación de licencia y configuración de impuestos.</p>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <a href="Manual_Instalacion_Atlas.pdf" download class="btn-download btn-download-secondary" style="flex: 1;">
+                            Descargar PDF
+                        </a>
+                        <a href="manual-instalacion.html" class="btn-download btn-download-secondary" style="padding: 14px;">
+                            Ver Guía Web →
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- VIDEO TUTORIAL INTEGRADO -->
+            <div class="tutorial-box">
+                <span class="card-tag tag-blue" style="margin: 0 auto 14px; display: inline-block;">Paso a Paso en Video</span>
+                <h3>¿Cómo instalar y activar Atlas?</h3>
+                <p>Sigue este video explicativo para completar la instalación y activar tu período de prueba o licencia oficial:</p>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube-nocookie.com/embed/jZuMMXlOPo0" title="Tutorial de Instalación de Atlas" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- SOPORTE WHATSAPP -->
+            <div style="text-align: center; margin-top: 40px; background: rgba(0,163,255,0.05); border: 1px solid rgba(0,163,255,0.2); border-radius: 12px; padding: 24px;">
+                <h4 style="font-family: 'Outfit', sans-serif; font-size: 18px; margin-bottom: 8px;">¿Necesitas tu archivo de licencia o ayuda con la instalación?</h4>
+                <p style="font-size: 14px; color: var(--text-dim); margin-bottom: 16px;">Escríbenos directamente a WhatsApp y te asistiremos de inmediato.</p>
+                <a href="https://wa.me/56941375819?text=Hola,%20acabo%20de%20descargar%20Atlas%20y%20necesito%20activar%20mi%20licencia" target="_blank" class="btn-download btn-download-primary" style="display: inline-flex; width: auto; background: #25d366;">
+                    Solicitar Licencia por WhatsApp
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">ATLAS<span>.</span></div>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/atlastudirectorcomercial" target="_blank">Instagram</a>
+                <a href="https://wa.me/56941375819" target="_blank" class="hl">WhatsApp</a>
+                <a href="#">TikTok</a>
+            </div>
+        </div>
+        <div class="footer-copy">&copy; 2026 Atlas &mdash; Tu Director Comercial. Democratizando la inteligencia comercial en Latinoamérica.</div>
+    </footer>
+
+    <a href="https://wa.me/56941375819" target="_blank" class="wa-btn">
+        <svg viewBox="0 0 24 24"><path d="M12.031 0C5.385 0 0 5.384 0 12.031c0 2.122.553 4.195 1.604 6.014L.044 24l6.109-1.602c1.761.96 3.753 1.464 5.878 1.464 6.646 0 12.031-5.385 12.031-12.031S18.677 0 12.031 0zm0 22.028c-1.848 0-3.661-.497-5.247-1.439l-.376-.223-3.896 1.021 1.039-3.797-.245-.39A9.972 9.972 0 012.03 12.03c0-5.514 4.486-10 10.001-10 5.514 0 10 4.486 10 10 0 5.514-4.486 9.998-10 9.998z"/></svg>
+        WhatsApp
+    </a>
+
+    <script>
+        // Hamburger Menu
+        const navToggle = document.getElementById('navToggle');
+        const mainNav   = document.getElementById('mainNav');
+        navToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('open');
+            const isOpen = mainNav.classList.contains('open');
+            const spans = navToggle.querySelectorAll('span');
+            if (isOpen) {
+                spans[0].style.cssText = 'transform: rotate(45deg) translate(5px,5px)';
+                spans[1].style.cssText = 'opacity:0';
+                spans[2].style.cssText = 'transform: rotate(-45deg) translate(5px,-5px)';
+            } else { spans.forEach(s => s.style.cssText = ''); }
+        });
+        function closeNav() {
+            mainNav.classList.remove('open');
+            navToggle.querySelectorAll('span').forEach(s => s.style.cssText = '');
+        }
+        document.addEventListener('click', (e) => {
+            if (!mainNav.contains(e.target) && !navToggle.contains(e.target)) closeNav();
+        });
+
+        // Formulario Lead y Envío
+        const leadForm = document.getElementById('leadForm');
+        const formWrapper = document.getElementById('formWrapper');
+        const downloadArea = document.getElementById('downloadArea');
+        const btnSubmit = document.getElementById('btnSubmit');
+
+        leadForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = '<span>Procesando...</span>';
+
+            const formData = new FormData(leadForm);
+
+            fetch('https://formsubmit.co/ajax/contacto@atlastudirectorcomercial.com', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(Object.fromEntries(formData))
+            })
+            .then(response => response.json())
+            .then(data => {
+                mostrarDescargas();
+            })
+            .catch(error => {
+                // En caso de cualquier detalle de red, igualmente se le permite descargar al cliente
+                mostrarDescargas();
+            });
+        });
+
+        function mostrarDescargas() {
+            formWrapper.style.display = 'none';
+            downloadArea.style.display = 'block';
+            window.scrollTo({ top: 120, behavior: 'smooth' });
+
+            // Inicio automático de la descarga tras 1.5s
+            setTimeout(() => {
+                const autoLink = document.getElementById('autoDownloadLink');
+                if (autoLink) {
+                    window.location.href = autoLink.href;
+                }
+            }, 1500);
+        }
+    </script>
+
+</body>
+</html>

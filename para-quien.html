@@ -99,7 +99,7 @@
         }
         h1 {
             font-family: 'Outfit', sans-serif;
-            font-size: clamp(36px, 5vw, 60px);
+            font-size: clamp(36px, 5vw, 58px);
             font-weight: 900;
             letter-spacing: -1.5px;
             line-height: 1.1;
@@ -111,50 +111,52 @@
         .hero-sub {
             font-size: 18px;
             color: var(--text-dim);
-            max-width: 580px;
+            max-width: 600px;
             margin: 0 auto;
             font-weight: 300;
         }
 
-        /* AUDIENCIAS */
         .audience-section {
-            padding: 80px 6%;
+            padding: 40px 6% 100px;
             position: relative; z-index: 1;
         }
         .audience-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
-            max-width: 1050px;
+            max-width: 1000px;
             margin: 0 auto;
         }
         .audience-card {
             background: var(--bg-card);
-            padding: 34px 28px;
+            padding: 32px 28px;
             border-radius: 12px;
             border: 1px solid var(--border);
             backdrop-filter: blur(10px);
             transition: border-color 0.2s, transform 0.2s;
         }
-        .audience-card:hover { border-color: var(--atlas-blue); transform: translateY(-4px); }
+        .audience-card:hover {
+            border-color: var(--atlas-blue);
+            transform: translateY(-3px);
+        }
         .audience-header {
             display: flex;
             align-items: center;
-            gap: 14px;
-            margin-bottom: 16px;
+            gap: 12px;
+            margin-bottom: 14px;
         }
         .audience-check {
-            width: 28px; height: 28px;
-            border-radius: 50%;
+            width: 32px;
+            height: 32px;
             background: rgba(0,163,255,0.1);
-            border: 1px solid rgba(0,163,255,0.25);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
         }
-        .audience-check svg { width: 14px; height: 14px; fill: var(--atlas-blue); }
-        .audience-header h3 {
+        .audience-check svg { width: 18px; height: 18px; fill: var(--atlas-blue); }
+        .audience-card h3 {
             font-family: 'Outfit', sans-serif;
             font-size: 20px;
             font-weight: 800;
@@ -164,28 +166,25 @@
         .audience-desc {
             font-size: 14px;
             color: var(--text-dim);
-            line-height: 1.7;
-            margin-left: 42px;
+            line-height: 1.6;
         }
 
-        /* CTA CIERRE */
         .cierre {
-            padding: 100px 6%;
+            padding: 90px 6%;
             text-align: center;
             border-top: 1px solid var(--border);
             position: relative; z-index: 1;
         }
         .cierre h2 {
             font-family: 'Outfit', sans-serif;
-            font-size: clamp(28px, 5vw, 52px);
+            font-size: clamp(30px, 4vw, 48px);
             font-weight: 900;
+            margin-bottom: 16px;
             letter-spacing: -1px;
-            margin-bottom: 20px;
-            line-height: 1.1;
         }
         .cierre h2 span { color: var(--atlas-blue); }
         .cierre p {
-            font-size: 18px;
+            font-size: 17px;
             color: var(--text-dim);
             max-width: 520px;
             margin: 0 auto 40px;
@@ -236,18 +235,38 @@
         }
         .wa-btn:hover { transform: scale(1.05); }
         .wa-btn svg { width: 20px; height: 20px; fill: white; }
+
+        /* MOBILE */
+        .nav-toggle { display: none; }
+        @media (max-width: 768px) {
+            header { padding: 16px 5%; }
+            .logo small { display: none; }
+            .nav-toggle { display: flex; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; z-index: 100; }
+            .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+            nav { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(9,12,16,0.98); backdrop-filter: blur(20px); flex-direction: column; align-items: center; justify-content: center; gap: 28px; z-index: 50; }
+            nav.open { display: flex; }
+            nav a { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 700; padding: 8px 20px; color: var(--text-dim); }
+            nav a.btn-nav { font-size: 18px; padding: 14px 40px; }
+            .audience-grid { grid-template-columns: 1fr; }
+            .footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .wa-btn { bottom: 16px; right: 16px; padding: 10px 16px; font-size: 13px; }
+        }
     </style>
 </head>
 <body>
 
     <header>
         <a href="index.html" class="logo">ATLAS<span>.</span><small>Tu Director Comercial</small></a>
-        <nav>
-            <a href="como-funciona.html">Cómo funciona</a>
-            <a href="para-quien.html" class="active">Para quién es</a>
-            <a href="valores.html">Valores</a>
-            <a href="filosofia.html">Filosofía</a>
-            <a href="contacto.html" class="btn-nav">Solicitar demo</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+        <nav id="mainNav">
+            <a href="como-funciona.html" onclick="closeNav()">Cómo funciona</a>
+            <a href="para-quien.html" class="active" onclick="closeNav()">Para quién es</a>
+            <a href="valores.html" onclick="closeNav()">Valores</a>
+            <a href="filosofia.html" onclick="closeNav()">Filosofía</a>
+            <a href="contacto.html" onclick="closeNav()">Contáctanos</a>
+            <a href="descargar.html" class="btn-nav" onclick="closeNav()">Descargar Demo</a>
         </nav>
     </header>
 
@@ -324,7 +343,7 @@
     <section class="cierre">
         <h2>Tu negocio merece<br>un <span>Director Comercial.</span></h2>
         <p>Decisiones. No reportes. Mientras tú vendes, Atlas analiza.</p>
-        <a href="contacto.html" class="btn-primary">Solicitar una demostración</a>
+        <a href="descargar.html" class="btn-primary">Descargar Demostración</a>
     </section>
 
     <footer>
@@ -334,6 +353,8 @@
                 <a href="https://www.instagram.com/atlastudirectorcomercial" target="_blank">Instagram</a>
                 <a href="https://wa.me/56941375819" target="_blank" class="hl">WhatsApp</a>
                 <a href="#">TikTok</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="descargar.html" class="hl">Descargar Demo</a>
             </div>
         </div>
         <div class="footer-copy">&copy; 2026 Atlas &mdash; Tu Director Comercial. Democratizando la inteligencia comercial en Latinoamérica.</div>
@@ -343,6 +364,28 @@
         <svg viewBox="0 0 24 24"><path d="M12.031 0C5.385 0 0 5.384 0 12.031c0 2.122.553 4.195 1.604 6.014L.044 24l6.109-1.602c1.761.96 3.753 1.464 5.878 1.464 6.646 0 12.031-5.385 12.031-12.031S18.677 0 12.031 0zm0 22.028c-1.848 0-3.661-.497-5.247-1.439l-.376-.223-3.896 1.021 1.039-3.797-.245-.39A9.972 9.972 0 012.03 12.03c0-5.514 4.486-10 10.001-10 5.514 0 10 4.486 10 10 0 5.514-4.486 9.998-10 9.998z"/></svg>
         WhatsApp
     </a>
+
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const mainNav   = document.getElementById('mainNav');
+        navToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('open');
+            const isOpen = mainNav.classList.contains('open');
+            const spans = navToggle.querySelectorAll('span');
+            if (isOpen) {
+                spans[0].style.cssText = 'transform: rotate(45deg) translate(5px,5px)';
+                spans[1].style.cssText = 'opacity:0';
+                spans[2].style.cssText = 'transform: rotate(-45deg) translate(5px,-5px)';
+            } else { spans.forEach(s => s.style.cssText = ''); }
+        });
+        function closeNav() {
+            mainNav.classList.remove('open');
+            navToggle.querySelectorAll('span').forEach(s => s.style.cssText = '');
+        }
+        document.addEventListener('click', (e) => {
+            if (!mainNav.contains(e.target) && !navToggle.contains(e.target)) closeNav();
+        });
+    </script>
 
 </body>
 </html>

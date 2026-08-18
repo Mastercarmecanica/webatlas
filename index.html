@@ -129,10 +129,18 @@
             line-height: 1.7;
         }
         .hero-sub strong { color: var(--text); font-weight: 500; }
+        .hero-btns {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
         .btn-primary {
             background: var(--atlas-blue);
             color: #fff;
-            padding: 16px 44px;
+            padding: 16px 40px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
@@ -145,6 +153,24 @@
             background: var(--atlas-blue2);
             transform: translateY(-2px);
             box-shadow: 0 8px 30px rgba(0,163,255,0.25);
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 16px 36px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            display: inline-block;
+            transition: all 0.2s;
+            letter-spacing: 0.3px;
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--atlas-blue);
+            transform: translateY(-2px);
         }
         .hero-note {
             margin-top: 22px;
@@ -734,7 +760,8 @@
             <a href="para-quien.html" onclick="closeNav()">Para quién es</a>
             <a href="valores.html" onclick="closeNav()">Valores</a>
             <a href="filosofia.html" onclick="closeNav()">Filosofía</a>
-            <a href="contacto.html" class="btn-nav">Solicitar demo</a>
+            <a href="contacto.html" onclick="closeNav()">Contáctanos</a>
+            <a href="descargar.html" class="btn-nav" onclick="closeNav()">Descargar Demo</a>
         </nav>
     </header>
 
@@ -746,7 +773,10 @@
         <p class="hero-sub">
             Cada mañana Atlas analiza miles de datos y te dice <strong>exactamente qué hacer</strong> para vender más, recuperar rentabilidad y dedicar menos tiempo a administrar tu negocio.
         </p>
-        <a href="contacto.html" class="btn-primary">Solicitar una demostración</a>
+        <div class="hero-btns">
+            <a href="descargar.html" class="btn-primary">Descargar Demo Gratis</a>
+            <a href="contacto.html" class="btn-secondary">Contáctanos</a>
+        </div>
         <p class="hero-note">
             La mayoría de los negocios no pierde dinero por vender poco. Lo pierde por tomar decisiones con información incompleta. Atlas existe para cambiar eso.
         </p>
@@ -893,6 +923,7 @@
                 <a href="https://wa.me/56941375819" target="_blank" class="hl">WhatsApp</a>
                 <a href="#">TikTok</a>
                 <a href="contacto.html">Contacto</a>
+                <a href="descargar.html" class="hl">Descargar Demo</a>
             </div>
         </div>
         <div class="footer-copy">
