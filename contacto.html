@@ -112,9 +112,9 @@
         }
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
-            max-width: 960px;
+            max-width: 1000px;
             margin: 0 auto 60px;
         }
         .contact-card {
@@ -124,8 +124,15 @@
             border: 1px solid var(--border);
             backdrop-filter: blur(10px);
             transition: border-color 0.2s, transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .contact-card:hover { border-color: var(--atlas-blue); transform: translateY(-4px); }
+        .contact-card.ai-card {
+            border-color: rgba(0, 163, 255, 0.4);
+            background: linear-gradient(180deg, rgba(0,163,255,0.08) 0%, rgba(17,22,30,0.9) 100%);
+        }
         .contact-card-label {
             font-size: 10px;
             font-weight: 700;
@@ -133,6 +140,9 @@
             color: var(--atlas-blue);
             text-transform: uppercase;
             margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
         .contact-card h3 {
             font-family: 'Outfit', sans-serif;
@@ -181,10 +191,12 @@
         .btn-contact:hover { background: var(--atlas-blue2); }
         .btn-contact.whatsapp { background: #25d366; }
         .btn-contact.whatsapp:hover { background: #1da851; }
+        .btn-contact.ai-btn { background: linear-gradient(135deg, #00a3ff 0%, #0055ff 100%); }
+        .btn-contact.ai-btn:hover { background: linear-gradient(135deg, #0088dd 0%, #0044dd 100%); }
 
         /* BANNER DEMO */
         .demo-banner {
-            max-width: 960px;
+            max-width: 1000px;
             margin: 0 auto;
             background: linear-gradient(135deg, rgba(0, 163, 255, 0.12) 0%, rgba(17, 22, 30, 0.9) 100%);
             border: 1px solid rgba(0, 163, 255, 0.3);
@@ -250,6 +262,42 @@
         .wa-btn:hover { transform: scale(1.05); }
         .wa-btn svg { width: 20px; height: 20px; fill: white; }
 
+        /* Botón Flotante Asesor IA */
+        .ai-chat-btn {
+            position: fixed; bottom: 88px; right: 28px;
+            background: linear-gradient(135deg, #00a3ff 0%, #0055ff 100%);
+            color: #ffffff;
+            border-radius: 50px;
+            padding: 11px 20px;
+            font-weight: 700;
+            font-size: 13px;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(0, 163, 255, 0.4), 0 0 12px rgba(0, 163, 255, 0.25);
+            display: flex; align-items: center; gap: 9px;
+            z-index: 1000;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transition: all 0.25s ease;
+            backdrop-filter: blur(8px);
+        }
+        .ai-chat-btn:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 8px 30px rgba(0, 163, 255, 0.65), 0 0 20px rgba(0, 163, 255, 0.4);
+            color: #ffffff;
+        }
+        .ai-chat-btn svg { width: 18px; height: 18px; fill: white; flex-shrink: 0; }
+        .ai-chat-btn .ai-dot {
+            width: 7px; height: 7px;
+            background-color: #34d399;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 6px #34d399;
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
+
         /* MOBILE */
         .nav-toggle { display: none; }
         @media (max-width: 768px) {
@@ -262,6 +310,8 @@
             nav a { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 700; padding: 8px 20px; color: var(--text-dim); }
             nav a.btn-nav { font-size: 18px; padding: 14px 40px; }
             .demo-banner { padding: 28px 20px; }
+            .wa-btn { bottom: 16px; right: 16px; padding: 10px 16px; font-size: 13px; }
+            .ai-chat-btn { bottom: 70px; right: 16px; padding: 9px 15px; font-size: 12px; }
         }
     </style>
 </head>
@@ -277,6 +327,7 @@
             <a href="para-quien.html" onclick="closeNav()">Para quién es</a>
             <a href="valores.html" onclick="closeNav()">Valores</a>
             <a href="filosofia.html" onclick="closeNav()">Filosofía</a>
+            <a href="https://gemini.google.com/gem-labs/1D2FNWzvP0BZeXrzPNwtTkdVRzCGQJY8X" target="_blank" rel="noopener noreferrer" style="color: #60a5fa;" onclick="closeNav()">Asesor IA ✦</a>
             <a href="contacto.html" class="active" onclick="closeNav()">Contáctanos</a>
             <a href="descargar.html" class="btn-nav" onclick="closeNav()">Descargar Demo</a>
         </nav>
@@ -285,38 +336,63 @@
     <section class="hero">
         <div class="section-label">Canales de Contacto</div>
         <h1>Contáctanos.</h1>
-        <p class="hero-sub">Elige el canal que prefieras para comunicarte directamente con nosotros o solicitar asistencia con Atlas.</p>
+        <p class="hero-sub">Elige el canal que prefieras para comunicarte directamente con nosotros, consultar a nuestro Asesor IA o solicitar asistencia con Atlas.</p>
     </section>
 
     <section class="contact-section">
         <div class="contact-grid">
 
+            <!-- Card Asesor IA -->
+            <div class="contact-card ai-card">
+                <div>
+                    <div class="contact-card-label">
+                        <span style="width: 7px; height: 7px; background: #34d399; border-radius: 50%; display: inline-block;"></span>
+                        Inteligencia Artificial 24/7
+                    </div>
+                    <h3>Asesor Virtual Atlas</h3>
+                    <p>Resuelve dudas comerciales, de precios, instalación o funciones técnicas al instante con nuestro Asesor IA en vivo.</p>
+                </div>
+                <a href="https://gemini.google.com/gem-labs/1D2FNWzvP0BZeXrzPNwtTkdVRzCGQJY8X" target="_blank" rel="noopener noreferrer" class="btn-contact ai-btn">
+                    <svg style="width:18px;height:18px;fill:white;" viewBox="0 0 24 24"><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/></svg>
+                    Chatear con Asesor IA
+                </a>
+            </div>
+
+            <!-- Card WhatsApp -->
             <div class="contact-card">
-                <div class="contact-card-label">Canal directo</div>
-                <h3>WhatsApp</h3>
-                <p>Respuesta directa y personalizada. Sin esperas innecesarias.</p>
+                <div>
+                    <div class="contact-card-label">Canal directo</div>
+                    <h3>WhatsApp</h3>
+                    <p>Respuesta directa y personalizada de nuestro equipo comercial y de soporte.</p>
+                </div>
                 <a href="https://wa.me/56941375819" target="_blank" class="btn-contact whatsapp">
                     <svg style="width:18px;height:18px;fill:white;" viewBox="0 0 24 24"><path d="M12.031 0C5.385 0 0 5.384 0 12.031c0 2.122.553 4.195 1.604 6.014L.044 24l6.109-1.602c1.761.96 3.753 1.464 5.878 1.464 6.646 0 12.031-5.385 12.031-12.031S18.677 0 12.031 0zm0 22.028c-1.848 0-3.661-.497-5.247-1.439l-.376-.223-3.896 1.021 1.039-3.797-.245-.39A9.972 9.972 0 012.03 12.03c0-5.514 4.486-10 10.001-10 5.514 0 10 4.486 10 10 0 5.514-4.486 9.998-10 9.998z"/></svg>
                     Escribir a +56 9 4137 5819
                 </a>
             </div>
 
+            <!-- Card Email -->
             <div class="contact-card">
-                <div class="contact-card-label">Correo electrónico</div>
-                <h3>Email</h3>
-                <p>Escríbenos con cualquier consulta comercial o técnica. Respuesta en menos de 24 horas.</p>
-                <a href="mailto:contacto@atlastudirectorcomercial.com" class="contact-link">contacto@atlastudirectorcomercial.com</a>
+                <div>
+                    <div class="contact-card-label">Correo electrónico</div>
+                    <h3>Email</h3>
+                    <p>Escríbenos con cualquier consulta comercial o técnica. Respuesta en menos de 24 horas.</p>
+                    <a href="mailto:contacto@atlastudirectorcomercial.com" class="contact-link">contacto@atlastudirectorcomercial.com</a>
+                </div>
                 <button onclick="navigator.clipboard.writeText('contacto@atlastudirectorcomercial.com'); this.textContent='✓ Copiado'; this.style.background='#059669'; setTimeout(() => { this.textContent='Copiar dirección'; this.style.background='var(--atlas-blue)'; }, 2000);" class="btn-contact">
                     Copiar dirección
                 </button>
             </div>
 
+            <!-- Card Instagram -->
             <div class="contact-card">
-                <div class="contact-card-label">Redes sociales</div>
-                <h3>Instagram</h3>
-                <p>Casos de estudio, demostraciones y el día a día de Atlas como Director Comercial.</p>
-                <a href="https://www.instagram.com/atlastudirectorcomercial" target="_blank" class="contact-link">@atlastudirectorcomercial</a>
-                <a href="https://www.instagram.com/atlastudirectorcomercial" target="_blank" class="btn-contact" style="margin-top: 10px;">
+                <div>
+                    <div class="contact-card-label">Redes sociales</div>
+                    <h3>Instagram</h3>
+                    <p>Casos de estudio, demostraciones y el día a día de Atlas como Director Comercial.</p>
+                    <a href="https://www.instagram.com/atlastudirectorcomercial" target="_blank" class="contact-link">@atlastudirectorcomercial</a>
+                </div>
+                <a href="https://www.instagram.com/atlastudirectorcomercial" target="_blank" class="btn-contact">
                     Ver en Instagram
                 </a>
             </div>
@@ -340,12 +416,23 @@
             <div class="footer-links">
                 <a href="https://www.instagram.com/atlastudirectorcomercial" target="_blank">Instagram</a>
                 <a href="https://wa.me/56941375819" target="_blank" class="hl">WhatsApp</a>
+                <a href="https://gemini.google.com/gem-labs/1D2FNWzvP0BZeXrzPNwtTkdVRzCGQJY8X" target="_blank" rel="noopener noreferrer" style="color: #60a5fa;">Asesor Virtual IA ✦</a>
                 <a href="#">TikTok</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="descargar.html" class="hl">Descargar Demo</a>
             </div>
         </div>
         <div class="footer-copy">&copy; 2026 Atlas &mdash; Tu Director Comercial. Democratizando la inteligencia comercial en Latinoamérica.</div>
     </footer>
 
+    <!-- Botón Flotante Asesor IA -->
+    <a href="https://gemini.google.com/gem-labs/1D2FNWzvP0BZeXrzPNwtTkdVRzCGQJY8X" target="_blank" rel="noopener noreferrer" class="ai-chat-btn" title="Chatear con el Asesor Virtual de Atlas">
+        <span class="ai-dot"></span>
+        <svg viewBox="0 0 24 24"><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/></svg>
+        <span>Hablar con Asesor IA</span>
+    </a>
+
+    <!-- WhatsApp flotante -->
     <a href="https://wa.me/56941375819" target="_blank" class="wa-btn">
         <svg viewBox="0 0 24 24"><path d="M12.031 0C5.385 0 0 5.384 0 12.031c0 2.122.553 4.195 1.604 6.014L.044 24l6.109-1.602c1.761.96 3.753 1.464 5.878 1.464 6.646 0 12.031-5.385 12.031-12.031S18.677 0 12.031 0zm0 22.028c-1.848 0-3.661-.497-5.247-1.439l-.376-.223-3.896 1.021 1.039-3.797-.245-.39A9.972 9.972 0 012.03 12.03c0-5.514 4.486-10 10.001-10 5.514 0 10 4.486 10 10 0 5.514-4.486 9.998-10 9.998z"/></svg>
         WhatsApp

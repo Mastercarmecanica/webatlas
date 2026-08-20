@@ -207,6 +207,42 @@
         .wa-btn:hover { transform: scale(1.05); }
         .wa-btn svg { width: 20px; height: 20px; fill: white; }
 
+        /* Botón Flotante Asesor IA */
+        .ai-chat-btn {
+            position: fixed; bottom: 88px; right: 28px;
+            background: linear-gradient(135deg, #00a3ff 0%, #0055ff 100%);
+            color: #ffffff;
+            border-radius: 50px;
+            padding: 11px 20px;
+            font-weight: 700;
+            font-size: 13px;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(0, 163, 255, 0.4), 0 0 12px rgba(0, 163, 255, 0.25);
+            display: flex; align-items: center; gap: 9px;
+            z-index: 1000;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transition: all 0.25s ease;
+            backdrop-filter: blur(8px);
+        }
+        .ai-chat-btn:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 8px 30px rgba(0, 163, 255, 0.65), 0 0 20px rgba(0, 163, 255, 0.4);
+            color: #ffffff;
+        }
+        .ai-chat-btn svg { width: 18px; height: 18px; fill: white; flex-shrink: 0; }
+        .ai-chat-btn .ai-dot {
+            width: 7px; height: 7px;
+            background-color: #34d399;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 6px #34d399;
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
+
         /* MOBILE */
         .nav-toggle { display: none; }
         @media (max-width: 768px) {
@@ -223,6 +259,7 @@
             .valores-grid { grid-template-columns: 1fr; }
             .footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
             .wa-btn { bottom: 16px; right: 16px; padding: 10px 16px; font-size: 13px; }
+            .ai-chat-btn { bottom: 70px; right: 16px; padding: 9px 15px; font-size: 12px; }
         }
     </style>
 </head>
@@ -238,6 +275,7 @@
             <a href="para-quien.html" onclick="closeNav()">Para quién es</a>
             <a href="valores.html" class="active" onclick="closeNav()">Valores</a>
             <a href="filosofia.html" onclick="closeNav()">Filosofía</a>
+            <a href="https://gemini.google.com/gem-labs/1D2FNWzvP0BZeXrzPNwtTkdVRzCGQJY8X" target="_blank" rel="noopener noreferrer" style="color: #60a5fa;" onclick="closeNav()">Asesor IA ✦</a>
             <a href="contacto.html" onclick="closeNav()">Contáctanos</a>
             <a href="descargar.html" class="btn-nav" onclick="closeNav()">Descargar Demo</a>
         </nav>
@@ -311,6 +349,7 @@
             <div class="footer-links">
                 <a href="https://www.instagram.com/atlastudirectorcomercial" target="_blank">Instagram</a>
                 <a href="https://wa.me/56941375819" target="_blank" class="hl">WhatsApp</a>
+                <a href="https://gemini.google.com/gem-labs/1D2FNWzvP0BZeXrzPNwtTkdVRzCGQJY8X" target="_blank" rel="noopener noreferrer" style="color: #60a5fa;">Asesor Virtual IA ✦</a>
                 <a href="#">TikTok</a>
                 <a href="contacto.html">Contacto</a>
                 <a href="descargar.html" class="hl">Descargar Demo</a>
@@ -319,6 +358,14 @@
         <div class="footer-copy">&copy; 2026 Atlas &mdash; Tu Director Comercial. Democratizando la inteligencia comercial en Latinoamérica.</div>
     </footer>
 
+    <!-- Botón Flotante Asesor IA -->
+    <a href="https://gemini.google.com/gem-labs/1D2FNWzvP0BZeXrzPNwtTkdVRzCGQJY8X" target="_blank" rel="noopener noreferrer" class="ai-chat-btn" title="Chatear con el Asesor Virtual de Atlas">
+        <span class="ai-dot"></span>
+        <svg viewBox="0 0 24 24"><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/></svg>
+        <span>Hablar con Asesor IA</span>
+    </a>
+
+    <!-- WhatsApp flotante -->
     <a href="https://wa.me/56941375819" target="_blank" class="wa-btn">
         <svg viewBox="0 0 24 24"><path d="M12.031 0C5.385 0 0 5.384 0 12.031c0 2.122.553 4.195 1.604 6.014L.044 24l6.109-1.602c1.761.96 3.753 1.464 5.878 1.464 6.646 0 12.031-5.385 12.031-12.031S18.677 0 12.031 0zm0 22.028c-1.848 0-3.661-.497-5.247-1.439l-.376-.223-3.896 1.021 1.039-3.797-.245-.39A9.972 9.972 0 012.03 12.03c0-5.514 4.486-10 10.001-10 5.514 0 10 4.486 10 10 0 5.514-4.486 9.998-10 9.998z"/></svg>
         WhatsApp
